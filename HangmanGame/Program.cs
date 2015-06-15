@@ -16,7 +16,7 @@ namespace HangmanGame
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HangManGamePlayedForm());
+            Application.Run(new ChooseGameMode());
         }
     }
 }
