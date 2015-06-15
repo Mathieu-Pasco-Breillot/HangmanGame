@@ -1,6 +1,6 @@
 ﻿namespace HangmanGame
 {
-    partial class HangManGamePlayedForm
+    partial class SoloMode
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -89,8 +89,9 @@
             this.buttonValidationWord.Text = "Valider";
             this.buttonValidationWord.UseVisualStyleBackColor = true;
             this.buttonValidationWord.Click += new System.EventHandler(this.buttonValidationWord_Click);
+            this.buttonValidationWord.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.buttonValidationWord_KeyPress);
             // 
-            // HangManGamePlayedForm
+            // SoloMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -98,9 +99,10 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Name = "HangManGamePlayedForm";
+            this.Name = "SoloMode";
             this.Text = "HangMan";
             this.TransparencyKey = System.Drawing.Color.DarkRed;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SoloMode_FormClosing);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangman)).EndInit();

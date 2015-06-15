@@ -10,14 +10,27 @@ using System.Windows.Forms;
 
 namespace HangmanGame
 {
-    public partial class HangManGamePlayedForm : Form
+    public partial class SoloMode : Form
     {
         // Global Variables
+        ChooseGameMode formCGM;
+        VersusMode formVM;
+        string wordToFind;
         private List<char> Letters = new List<char>
         { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '-'};
-        public HangManGamePlayedForm()
+        public SoloMode(object cgm)
         {
             InitializeComponent();
+
+            try
+            {
+                formCGM = (ChooseGameMode)cgm;
+            }
+            catch (InvalidCastException)
+            {
+                formVM = (VersusMode)cgm;
+                wordToFind = cgm.ToString();
+            }
         }
 
         private void buttonValidationWord_Click(object sender, EventArgs e)
@@ -44,6 +57,21 @@ namespace HangmanGame
                     textBoxWordToFind.Select(tbLength, 0);
                     MessageBox.Show("Le dernier caractère entré n'est pas valide. Il doit être un de ceux là : " + enumAllow, "Erreur de caractère", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 }
+            }
+        }
+
+        private void SoloMode_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            formCGM.Close();
+        }
+
+        // Perform a click when button Enter is press on the keyboard
+        private void buttonValidationWord_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                buttonValidationWord.PerformClick();
             }
         }
     }
