@@ -95,6 +95,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "VersusMode";
             this.Text = "VersusMode";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VersusMode_FormClosing);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

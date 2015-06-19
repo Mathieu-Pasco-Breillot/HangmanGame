@@ -14,6 +14,7 @@ namespace HangmanGame
     {
         // Global Variables
         ChooseGameMode formCGM;
+        SoloMode formSm;
         public VersusMode(ChooseGameMode cgm)
         {
             InitializeComponent();
@@ -22,9 +23,9 @@ namespace HangmanGame
 
         private void buttonValidateWordToFind_Click(object sender, EventArgs e)
         {
-            SoloMode sm = new SoloMode(maskedTextBoxWordToFind.Text);
-            sm.Show();
-            formCGM.Close();
+            formSm = new SoloMode(this, maskedTextBoxWordToFind.Text);
+            Hide();
+            formSm.ShowDialog();
 
         }
 
@@ -36,6 +37,11 @@ namespace HangmanGame
                 e.Handled = true;
                 buttonValidateWordToFind.PerformClick();
             }
+        }
+
+        private void VersusMode_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            formCGM.Close();
         }
     }
 }
