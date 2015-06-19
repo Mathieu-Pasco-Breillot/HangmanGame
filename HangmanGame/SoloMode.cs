@@ -21,16 +21,14 @@ namespace HangmanGame
         public SoloMode(object cgm)
         {
             InitializeComponent();
+            formCGM = (ChooseGameMode)cgm;
+        }
+        public SoloMode(object vm, string wordToFind)
+        {
+            InitializeComponent();
+            formVM = (VersusMode)vm;
+            this.wordToFind = wordToFind;
 
-            try
-            {
-                formCGM = (ChooseGameMode)cgm;
-            }
-            catch (InvalidCastException)
-            {
-                formVM = (VersusMode)cgm;
-                wordToFind = cgm.ToString();
-            }
         }
 
         private void buttonValidationWord_Click(object sender, EventArgs e)
@@ -62,7 +60,15 @@ namespace HangmanGame
 
         private void SoloMode_FormClosing(object sender, FormClosingEventArgs e)
         {
-            formCGM.Close();
+            if(formCGM != null)
+            {
+                formCGM.Close();
+            }
+            if(formVM != null)
+            {
+                formVM.Close();
+            }
+            Dispose();
         }
 
         // Perform a click when button Enter is press on the keyboard
