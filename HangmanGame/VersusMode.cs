@@ -21,11 +21,24 @@ namespace HangmanGame
             formCGM = cgm;
         }
 
+        // Validate the maskedTextBox
         private void buttonValidateWordToFind_Click(object sender, EventArgs e)
         {
-            formSm = new SoloMode(this, maskedTextBoxWordToFind.Text);
-            Hide();
-            formSm.ShowDialog();
+            if (maskedTextBoxWordToFind.Text != null && maskedTextBoxWordToFind.Text != "" && maskedTextBoxWordToFind.Text.Length >= 3)
+            {
+                formSm = new SoloMode(this, maskedTextBoxWordToFind.Text);
+                Hide();
+                formSm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Le mot entré ne peux pas être inférieur à 3 caractères, sinon ça n'est pas considéré commme un mot !",
+                    "Avertissement",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button1);
+            }
 
         }
 
@@ -39,6 +52,7 @@ namespace HangmanGame
             }
         }
 
+        // Do stuff  to correctly shut down the application
         private void VersusMode_FormClosing(object sender, FormClosingEventArgs e)
         {
             formCGM.Close();
