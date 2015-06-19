@@ -16,8 +16,6 @@ namespace HangmanGame
         ChooseGameMode formCGM;
         VersusMode formVM;
         string wordToFind;
-        private List<char> Letters = new List<char>
-        { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '-'};
         public SoloMode(object cgm)
         {
             InitializeComponent();
@@ -33,31 +31,31 @@ namespace HangmanGame
 
         private void buttonValidationWord_Click(object sender, EventArgs e)
         {
-            // To be implemented, the word must be checked regarding the word to find.
-        }
+            // Get the word enter
+            string wordToVerify = textBoxWordToFind.Text;
 
-        private void textBoxWordToFind_TextChanged(object sender, EventArgs e)
-        {
-            // Shortcut to textbox length
-            int tbLength = textBoxWordToFind.Text.Length;
-            // Check if the textbox is not empty
-            if (tbLength != 0)
+            if(wordToVerify == wordToFind)
             {
-                // Check if the last caracter is one the allowed
-                if (!Letters.Contains(textBoxWordToFind.Text.Last()))
-                {
-                    string enumAllow = "";
-                    Letters.ForEach(delegate (char citem)
-                    {
-                        enumAllow += citem.ToString() + " | ";
-                    });
-                    textBoxWordToFind.Text = textBoxWordToFind.Text.Remove(tbLength - 1, 1);
-                    textBoxWordToFind.Select(tbLength, 0);
-                    MessageBox.Show("Le dernier caractère entré n'est pas valide. Il doit être un de ceux là : " + enumAllow, "Erreur de caractère", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                }
+                MessageBox.Show(
+                    "! ! ! Vous avez trouvé le mot ! ! !",
+                    "Félicitations",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
+            }
+            else
+            {
+                // To be implemented with a tooltip
             }
         }
 
+        // Check on each changement on the textBox if the character enter is valid.
+        private void textBoxWordToFind_TextChanged(object sender, EventArgs e)
+        {
+            Word.HasValidCharacter(textBoxWordToFind);
+        }
+
+        // Do stuff  to correctly shut down the application
         private void SoloMode_FormClosing(object sender, FormClosingEventArgs e)
         {
             if(formCGM != null)
@@ -70,9 +68,9 @@ namespace HangmanGame
             }
             Dispose();
         }
-
+        
         // Perform a click when button Enter is press on the keyboard
-        private void buttonValidationWord_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBoxWordToFind_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {

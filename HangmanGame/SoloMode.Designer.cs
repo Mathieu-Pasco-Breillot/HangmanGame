@@ -77,6 +77,7 @@
             this.textBoxWordToFind.Size = new System.Drawing.Size(374, 26);
             this.textBoxWordToFind.TabIndex = 1;
             this.textBoxWordToFind.TextChanged += new System.EventHandler(this.textBoxWordToFind_TextChanged);
+            this.textBoxWordToFind.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxWordToFind_KeyPress);
             // 
             // buttonValidationWord
             // 
@@ -89,7 +90,6 @@
             this.buttonValidationWord.Text = "Valider";
             this.buttonValidationWord.UseVisualStyleBackColor = true;
             this.buttonValidationWord.Click += new System.EventHandler(this.buttonValidationWord_Click);
-            this.buttonValidationWord.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.buttonValidationWord_KeyPress);
             // 
             // SoloMode
             // 
