@@ -66,6 +66,7 @@
     <Compile Include="VersusMode.Designer.cs">
       <DependentUpon>VersusMode.cs</DependentUpon>
     </Compile>
+    <Compile Include="Word.cs" />
     <EmbeddedResource Include="ChooseGameMode.resx">
       <DependentUpon>ChooseGameMode.cs</DependentUpon>
     </EmbeddedResource>
