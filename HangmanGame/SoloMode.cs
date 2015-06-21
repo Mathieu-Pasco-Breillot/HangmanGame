@@ -16,17 +16,18 @@ namespace HangmanGame
         ChooseGameMode formCGM;
         VersusMode formVM;
         string wordToFind;
+        short nbOfTries;
         public SoloMode(object cgm)
         {
             InitializeComponent();
             formCGM = (ChooseGameMode)cgm;
         }
-        public SoloMode(object vm, string wordToFind)
+        public SoloMode(object vm, string wordToFind, short nbOfTries)
         {
             InitializeComponent();
             formVM = (VersusMode)vm;
             this.wordToFind = wordToFind;
-
+            this.nbOfTries = nbOfTries;
         }
 
         private void buttonValidationWord_Click(object sender, EventArgs e)
@@ -34,7 +35,7 @@ namespace HangmanGame
             // Get the word enter
             string wordToVerify = textBoxWordToFind.Text;
 
-            if(wordToVerify == wordToFind)
+            if(wordToVerify == wordToFind && nbOfTries > 0)
             {
                 MessageBox.Show(
                     "! ! ! Vous avez trouvé le mot ! ! !",
@@ -45,7 +46,19 @@ namespace HangmanGame
             }
             else
             {
-                // To be implemented with a tooltip
+                if (nbOfTries > 0)
+                {
+                    nbOfTries--;
+                }
+                else
+                {
+                    MessageBox.Show(
+                    "Vous n'avez pas trouvé le mot... \nLe mot à trouver était : " + wordToFind,
+                    "C'est dommage",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1);
+                }
             }
         }
 
