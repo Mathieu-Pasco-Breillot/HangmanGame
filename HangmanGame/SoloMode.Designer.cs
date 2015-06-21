@@ -59,6 +59,7 @@
             this.pictureBoxHangman.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tableLayoutPanel1.SetColumnSpan(this.pictureBoxHangman, 3);
             this.pictureBoxHangman.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxHangman.Image = global::HangmanGame.Properties.Resources.Hangman_0;
             this.pictureBoxHangman.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxHangman.Name = "pictureBoxHangman";
             this.pictureBoxHangman.Size = new System.Drawing.Size(474, 450);
