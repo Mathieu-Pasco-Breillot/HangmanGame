@@ -21,14 +21,23 @@ namespace HangmanGame
             formCGM = cgm;
         }
 
+        // Do stuff  to correctly shut down the application
+        private void VersusMode_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            formCGM.Close();
+        }
+
         // Validate the maskedTextBox
         private void buttonValidateWordToFind_Click(object sender, EventArgs e)
         {
             if (maskedTextBoxWordToFind.Text != null && maskedTextBoxWordToFind.Text != "" && maskedTextBoxWordToFind.Text.Length >= 3)
             {
-                formSm = new SoloMode(this, maskedTextBoxWordToFind.Text);
-                Hide();
-                formSm.ShowDialog();
+                if (maskedTextBox1.Text != null && maskedTextBox1.Text != "")
+                {
+                    formSm = new SoloMode(this, maskedTextBoxWordToFind.Text, Convert.ToInt16(maskedTextBox1.Text));
+                    Hide();
+                    formSm.ShowDialog(); 
+                }
             }
             else
             {
@@ -51,11 +60,10 @@ namespace HangmanGame
                 buttonValidateWordToFind.PerformClick();
             }
         }
-
-        // Do stuff  to correctly shut down the application
-        private void VersusMode_FormClosing(object sender, FormClosingEventArgs e)
+        
+        private void maskedTextBoxWordToFind_TextChanged(object sender, EventArgs e)
         {
-            formCGM.Close();
-        }
+            Word.HasValidCharacter(maskedTextBoxWordToFind);
+        }        
     }
 }
