@@ -81,6 +81,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="VersusMode.resx">
       <DependentUpon>VersusMode.cs</DependentUpon>
@@ -97,6 +98,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hangman-0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hangman-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hangman-2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hangman-3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hangman-4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hangman-5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hangman-6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hangman-7.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hangman-8.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hangman-final.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
