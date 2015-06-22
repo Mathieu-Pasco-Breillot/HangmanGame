@@ -16,12 +16,13 @@ namespace HangmanGame
         ChooseGameMode formCGM;
         VersusMode formVM;
         string wordToFind;
-        short nbOfTries = 3;
+        short nbOfTries = 5;
         public SoloMode(object cgm)
         {
             InitializeComponent();
             formCGM = (ChooseGameMode)cgm;
             wordToFind = Word.PickAWord();
+            labelRemainsTries2.Text = nbOfTries.ToString();
         }
         public SoloMode(object vm, string wordToFind, short nbOfTries)
         {
@@ -29,14 +30,20 @@ namespace HangmanGame
             formVM = (VersusMode)vm;
             this.wordToFind = wordToFind;
             this.nbOfTries = nbOfTries;
+            labelRemainsTries2.Text = nbOfTries.ToString();
         }
 
         private void buttonValidationWord_Click(object sender, EventArgs e)
         {
+            // Delete one try on each validation call
+            nbOfTries--;
+            labelRemainsTries2.Text = nbOfTries.ToString();
             // Get the word enter
             string wordToVerify = textBoxWordToFind.Text;
+            // Get the list of bad characters entered
+            Dictionary<short, char> badCharacters = Word.WhichCharactersAreWrong(wordToFind, wordToVerify);
 
-            if(wordToVerify == wordToFind && nbOfTries > 0)
+            if (wordToVerify == wordToFind && nbOfTries > 0)
             {
                 MessageBox.Show(
                     "! ! ! Vous avez trouvé le mot ! ! !",
@@ -44,21 +51,19 @@ namespace HangmanGame
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
+                Application.Exit();
             }
             else
             {
-                if (nbOfTries > 0)
-                {
-                    nbOfTries--;
-                }
-                else
+                if (nbOfTries == 0)
                 {
                     MessageBox.Show(
-                    "Vous n'avez pas trouvé le mot... \nLe mot à trouver était : " + wordToFind,
-                    "C'est dommage",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error,
-                    MessageBoxDefaultButton.Button1);
+                                "Vous n'avez pas trouvé le mot... \nLe mot à trouver était : " + wordToFind,
+                                "C'est dommage",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error,
+                                MessageBoxDefaultButton.Button1);
+                    Application.Exit();
                 }
             }
         }
@@ -72,17 +77,17 @@ namespace HangmanGame
         // Do stuff  to correctly shut down the application
         private void SoloMode_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(formCGM != null)
+            if (formCGM != null)
             {
                 formCGM.Close();
             }
-            if(formVM != null)
+            if (formVM != null)
             {
                 formVM.Close();
             }
             Dispose();
         }
-        
+
         // Perform a click when button Enter is press on the keyboard
         private void textBoxWordToFind_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -91,6 +96,16 @@ namespace HangmanGame
                 e.Handled = true;
                 buttonValidationWord.PerformClick();
             }
+        }
+
+        private void pseudoTextBox_TextChanged(object sender, EventArgs e)
+        {
+            Word.HasValidCharacter(pseudoTextBox);
+        }
+
+        private void tableLayoutPanelInformations_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

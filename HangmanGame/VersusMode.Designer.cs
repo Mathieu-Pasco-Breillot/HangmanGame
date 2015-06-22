@@ -115,7 +115,7 @@
             this.maskedTextBoxWordToFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.maskedTextBoxWordToFind, 2);
             this.maskedTextBoxWordToFind.Location = new System.Drawing.Point(3, 38);
-            this.maskedTextBoxWordToFind.Mask = ">?L?L?L?L?L?L?L?L?L?L?L?L?L?L?L?L";
+            this.maskedTextBoxWordToFind.Mask = ">LLL??????????????????";
             this.maskedTextBoxWordToFind.Name = "maskedTextBoxWordToFind";
             this.maskedTextBoxWordToFind.Size = new System.Drawing.Size(293, 22);
             this.maskedTextBoxWordToFind.TabIndex = 1;

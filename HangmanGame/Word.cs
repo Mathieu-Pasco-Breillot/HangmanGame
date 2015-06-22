@@ -69,14 +69,23 @@ namespace HangmanGame
                 }
             }
         }
-        public static Dictionary<short, char> WhichCharactersAreWrong(string wordToFind, string WordToVerify)
+        public static Dictionary<short, char> WhichCharactersAreWrong(string wordToFind, string wordToVerify)
         {
-            Dictionary<short, char> badCharacters = new Dictionary<short, char>();
-            for (short i = 0; i < wordToFind.Length; i++)
+            int lentghToGoMax;
+            if(wordToFind.Length < wordToVerify.Length)
             {
-                if (wordToFind[i] != WordToVerify[i])
+                lentghToGoMax = wordToFind.Length;
+            }
+            else
+            {
+                lentghToGoMax = wordToVerify.Length;
+            }
+            Dictionary<short, char> badCharacters = new Dictionary<short, char>();
+            for (short i = 0; i < lentghToGoMax; i++)
+            {
+                if (wordToFind[i] != wordToVerify[i])
                 {
-                    badCharacters.Add(i, WordToVerify[i]);
+                    badCharacters.Add(i, wordToVerify[i]);
                 }
             }
             return badCharacters;
