@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,6 +80,105 @@ namespace HangmanGame
                 }
             }
             return badCharacters;
+        }
+
+        public static string PickAWord()
+        {
+            string dictionnaire = "../../Resources/dictionnaire.txt";
+            int nbOfLines = CountLinesInFile(dictionnaire);
+            Random r = new Random();
+            long randomLineNumber = r.Next(0, nbOfLines);
+            StreamReader sr = new StreamReader(dictionnaire);
+            string result = "";
+            for (int i = 0; i != randomLineNumber; i++)
+            {
+                result = sr.ReadLine();
+            }
+            sr.Close();
+            result = ReplaceAccent(result);
+            return result.ToUpper();
+        }
+
+        private static string ReplaceAccent(string result)
+        {
+            if (result.Contains('é'))
+            {
+                result = result.Replace('é', 'e');
+            }
+            if (result.Contains('è'))
+            {
+                result = result.Replace('è', 'e');
+            }
+            if (result.Contains('ê'))
+            {
+                result = result.Replace('ê', 'e');
+            }
+            if (result.Contains('ë'))
+            {
+                result = result.Replace('ë', 'e');
+            }
+            if (result.Contains('à'))
+            {
+                result = result.Replace('à', 'a');
+            }
+            if (result.Contains('â'))
+            {
+                result = result.Replace('â', 'a');
+            }
+            if (result.Contains('ä'))
+            {
+                result = result.Replace('ä', 'a');
+            }
+            if (result.Contains('ï'))
+            {
+                result = result.Replace('ï', 'i');
+            }
+            if (result.Contains('î'))
+            {
+                result = result.Replace('î', 'i');
+            }
+            if (result.Contains('ö'))
+            {
+                result = result.Replace('ö', 'o');
+            }
+            if (result.Contains('ô'))
+            {
+                result = result.Replace('ô', 'o');
+            }
+            if (result.Contains('ù'))
+            {
+                result = result.Replace('ù', 'u');
+            }
+            if (result.Contains('û'))
+            {
+                result = result.Replace('û', 'u');
+            }
+            if (result.Contains('ü'))
+            {
+                result = result.Replace('ü', 'u');
+            }
+            if (result.Contains('ÿ'))
+            {
+                result = result.Replace('ÿ', 'y');
+            }
+            if (result.Contains('ç'))
+            {
+                result = result.Replace('ç', 'c');
+            }
+            return result;
+        }
+
+        private static int CountLinesInFile(string f)
+        {
+            int count = 0;
+            string line;
+            StreamReader r = new StreamReader(f);
+            while ((line = r.ReadLine()) != null)
+            {
+                count++;
+            }
+            r.Close();
+            return count;
         }
     }
 }

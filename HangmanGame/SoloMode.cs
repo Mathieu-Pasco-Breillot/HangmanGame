@@ -16,11 +16,12 @@ namespace HangmanGame
         ChooseGameMode formCGM;
         VersusMode formVM;
         string wordToFind;
-        short nbOfTries;
+        short nbOfTries = 3;
         public SoloMode(object cgm)
         {
             InitializeComponent();
             formCGM = (ChooseGameMode)cgm;
+            wordToFind = Word.PickAWord();
         }
         public SoloMode(object vm, string wordToFind, short nbOfTries)
         {
