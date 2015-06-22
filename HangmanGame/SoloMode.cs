@@ -51,7 +51,7 @@ namespace HangmanGame
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
-                Application.Exit();
+                Dispose();
             }
             else
             {
@@ -63,7 +63,7 @@ namespace HangmanGame
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error,
                                 MessageBoxDefaultButton.Button1);
-                    Application.Exit();
+                    Dispose();
                 }
             }
         }
