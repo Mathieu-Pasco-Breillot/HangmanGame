@@ -54,7 +54,7 @@ namespace HangmanGame
             // Get the word enter
             string wordToVerify = textBoxWordToFind.Text;
             // Get the list of bad characters entered
-            Dictionary<short, char> badCharacters = Word.WhichCharactersAreWrong(wordToFind, wordToVerify);
+            displayWrongCharacters(Word.WhichCharactersAreWrong(wordToFind, wordToVerify));
 
             if (wordToVerify == wordToFind && nbOfTries > 0)
             {
@@ -117,5 +117,14 @@ namespace HangmanGame
             Word.HasValidCharacter(pseudoTextBox);
         }
 
+        // Add each dictionary entry to the datagridview as a new row.
+        private void displayWrongCharacters(Dictionary<short, char> badCharacters)
+        {
+            foreach(KeyValuePair<short, char> kvp in badCharacters)
+            {
+                string[] row = { kvp.Key.ToString(), kvp.Value.ToString() };
+                dataGridViewWrongLetters.Rows.Add(row);
+            }
+        }
     }
 }

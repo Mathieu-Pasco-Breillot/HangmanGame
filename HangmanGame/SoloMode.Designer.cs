@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanelGlobal = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxHangman = new System.Windows.Forms.PictureBox();
             this.textBoxWordToFind = new System.Windows.Forms.TextBox();
@@ -37,9 +38,17 @@
             this.pseudoLabel = new System.Windows.Forms.Label();
             this.labelRemainsTries1 = new System.Windows.Forms.Label();
             this.labelRemainsTries2 = new System.Windows.Forms.Label();
+            this.dataGridViewWrongLetters = new System.Windows.Forms.DataGridView();
+            this.pendudatabaseDataSet = new HangmanGame.pendudatabaseDataSet();
+            this.pendudatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Letter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanelGlobal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangman)).BeginInit();
             this.tableLayoutPanelInformations.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWrongLetters)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pendudatabaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pendudatabaseDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelGlobal
@@ -107,6 +116,7 @@
             this.tableLayoutPanelInformations.Controls.Add(this.pseudoLabel, 0, 0);
             this.tableLayoutPanelInformations.Controls.Add(this.labelRemainsTries1, 0, 2);
             this.tableLayoutPanelInformations.Controls.Add(this.labelRemainsTries2, 0, 3);
+            this.tableLayoutPanelInformations.Controls.Add(this.dataGridViewWrongLetters, 0, 4);
             this.tableLayoutPanelInformations.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelInformations.Location = new System.Drawing.Point(563, 3);
             this.tableLayoutPanelInformations.Name = "tableLayoutPanelInformations";
@@ -162,6 +172,45 @@
             this.labelRemainsTries2.Text = "9";
             this.labelRemainsTries2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // dataGridViewWrongLetters
+            // 
+            this.dataGridViewWrongLetters.AllowUserToDeleteRows = false;
+            this.dataGridViewWrongLetters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewWrongLetters.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Position,
+            this.Letter});
+            this.dataGridViewWrongLetters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewWrongLetters.Location = new System.Drawing.Point(3, 143);
+            this.dataGridViewWrongLetters.Name = "dataGridViewWrongLetters";
+            this.dataGridViewWrongLetters.ReadOnly = true;
+            this.dataGridViewWrongLetters.RowTemplate.Height = 24;
+            this.dataGridViewWrongLetters.Size = new System.Drawing.Size(240, 298);
+            this.dataGridViewWrongLetters.TabIndex = 4;
+            // 
+            // pendudatabaseDataSet
+            // 
+            this.pendudatabaseDataSet.DataSetName = "pendudatabaseDataSet";
+            this.pendudatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // pendudatabaseDataSetBindingSource
+            // 
+            this.pendudatabaseDataSetBindingSource.DataSource = this.pendudatabaseDataSet;
+            this.pendudatabaseDataSetBindingSource.Position = 0;
+            // 
+            // Position
+            // 
+            this.Position.HeaderText = "Position";
+            this.Position.Name = "Position";
+            this.Position.ReadOnly = true;
+            this.Position.ToolTipText = "Le position de la mauvaise lettre associée.";
+            // 
+            // Letter
+            // 
+            this.Letter.HeaderText = "Lettre";
+            this.Letter.Name = "Letter";
+            this.Letter.ReadOnly = true;
+            this.Letter.ToolTipText = "The wrong letter entered corresponding to the associated position.";
+            // 
             // SoloMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -180,6 +229,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangman)).EndInit();
             this.tableLayoutPanelInformations.ResumeLayout(false);
             this.tableLayoutPanelInformations.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWrongLetters)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pendudatabaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pendudatabaseDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -195,6 +247,11 @@
         private System.Windows.Forms.Label pseudoLabel;
         private System.Windows.Forms.Label labelRemainsTries1;
         private System.Windows.Forms.Label labelRemainsTries2;
+        private System.Windows.Forms.DataGridView dataGridViewWrongLetters;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Position;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Letter;
+        private pendudatabaseDataSet pendudatabaseDataSet;
+        private System.Windows.Forms.BindingSource pendudatabaseDataSetBindingSource;
     }
 }
 
