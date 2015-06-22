@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace HangmanGame
 {
+    /// <summary>
+    /// VersusMode Class
+    /// </summary>
     public partial class VersusMode : Form
     {
         // Global Variables
         ChooseGameMode formCGM;
         SoloMode formSm;
+        /// <summary>
+        /// The form constructor which take the previous ChooseGameMode form in parameter.
+        /// </summary>
+        /// <param name="cgm">The ChooseGameMode form to be close properly.</param>
         public VersusMode(ChooseGameMode cgm)
         {
             InitializeComponent();
@@ -61,6 +68,7 @@ namespace HangmanGame
             }
         }
         
+        // Verify if the last character entered is one of the allow.
         private void maskedTextBoxWordToFind_TextChanged(object sender, EventArgs e)
         {
             Word.HasValidCharacter(maskedTextBoxWordToFind);

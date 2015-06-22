@@ -118,7 +118,6 @@
             this.tableLayoutPanelInformations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelInformations.Size = new System.Drawing.Size(246, 444);
             this.tableLayoutPanelInformations.TabIndex = 3;
-            this.tableLayoutPanelInformations.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelInformations_Paint);
             // 
             // pseudoTextBox
             // 

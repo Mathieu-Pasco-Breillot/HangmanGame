@@ -10,8 +10,14 @@ using System.Windows.Forms;
 
 namespace HangmanGame
 {
+    /// <summary>
+    /// ChooseGameMode Class
+    /// </summary>
     public partial class ChooseGameMode : Form
     {
+        /// <summary>
+        /// The form constructor which take the previous form in parameter.
+        /// </summary>
         public ChooseGameMode()
         {
             InitializeComponent();

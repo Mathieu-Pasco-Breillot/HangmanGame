@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace HangmanGame
 {
+    /// <summary>
+    /// SoloMode class
+    /// </summary>
     public partial class SoloMode : Form
     {
         // Global Variables
@@ -17,17 +20,27 @@ namespace HangmanGame
         VersusMode formVM;
         string wordToFind;
         short nbOfTries = 5;
-        public SoloMode(object cgm)
+        /// <summary>
+        /// The form constructor which take the previous ChooseGameMode form in parameter.
+        /// </summary>
+        /// <param name="cgm">The ChooseGameMode form to be close properly.</param>
+        public SoloMode(ChooseGameMode cgm)
         {
             InitializeComponent();
-            formCGM = (ChooseGameMode)cgm;
+            formCGM = cgm;
             wordToFind = Word.PickAWord();
             labelRemainsTries2.Text = nbOfTries.ToString();
         }
-        public SoloMode(object vm, string wordToFind, short nbOfTries)
+        /// <summary>
+        /// The form constructor which take the previous VersusMode form in parameter.
+        /// </summary>
+        /// <param name="vm">The VersusMode form to be close properly.</param>
+        /// <param name="wordToFind">The word to find entered by the player</param>
+        /// <param name="nbOfTries">The number of tries entered by the player</param>
+        public SoloMode(VersusMode vm, string wordToFind, short nbOfTries)
         {
             InitializeComponent();
-            formVM = (VersusMode)vm;
+            formVM = vm;
             this.wordToFind = wordToFind;
             this.nbOfTries = nbOfTries;
             labelRemainsTries2.Text = nbOfTries.ToString();
@@ -98,14 +111,11 @@ namespace HangmanGame
             }
         }
 
+        // Check on each changement on the pesudoTextBox if the character enter is valid.
         private void pseudoTextBox_TextChanged(object sender, EventArgs e)
         {
             Word.HasValidCharacter(pseudoTextBox);
         }
 
-        private void tableLayoutPanelInformations_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

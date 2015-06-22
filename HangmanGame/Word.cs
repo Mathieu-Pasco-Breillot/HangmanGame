@@ -8,6 +8,9 @@ using System.Windows.Forms;
 
 namespace HangmanGame
 {
+    /// <summary>
+    /// The word class to do some verifications on words.
+    /// </summary>
     public static class Word
     {
         private static List<char> Letters = new List<char>
@@ -43,6 +46,10 @@ namespace HangmanGame
                 }
             }
         }
+        /// <summary>
+        /// Check if the character just type is a valid one.
+        /// </summary>
+        /// <param name="word">The maskedTextbox which contains the word enter by the player</param>
         public static void HasValidCharacter(MaskedTextBox word)
         {
             // Shortcut to textbox length
@@ -69,6 +76,12 @@ namespace HangmanGame
                 }
             }
         }
+        /// <summary>
+        /// Verify each character one by one if they are the same at the same position, if not it's added to the dictionary.
+        /// </summary>
+        /// <param name="wordToFind">The word to find</param>
+        /// <param name="wordToVerify">The word enter by the player</param>
+        /// <returns>A dictionary which contains the bad characters entered.</returns>
         public static Dictionary<short, char> WhichCharactersAreWrong(string wordToFind, string wordToVerify)
         {
             int lentghToGoMax;
@@ -91,6 +104,10 @@ namespace HangmanGame
             return badCharacters;
         }
 
+        /// <summary>
+        /// Get a random word from the file which contains more than 337 000 words.
+        /// </summary>
+        /// <returns>The word picked in a random way</returns>
         public static string PickAWord()
         {
             string dictionnaire = "../../Resources/dictionnaire.txt";
