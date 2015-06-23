@@ -46,6 +46,7 @@ namespace HangmanGame
                 }
             }
         }
+        
         /// <summary>
         /// Check if the character just type is a valid one.
         /// </summary>
@@ -76,6 +77,7 @@ namespace HangmanGame
                 }
             }
         }
+        
         /// <summary>
         /// Verify each character one by one if they are the same at the same position, if not it's added to the dictionary.
         /// </summary>
@@ -103,7 +105,7 @@ namespace HangmanGame
             }
             return badCharacters;
         }
-
+        
         /// <summary>
         /// Get a random word from the file which contains more than 337 000 words.
         /// </summary>
@@ -205,6 +207,39 @@ namespace HangmanGame
             }
             r.Close();
             return count;
+        }
+        
+        /// <summary>
+        /// Get all the indexes of the character for the given word.
+        /// </summary>
+        /// <param name="characterToVerify">The character to look for.</param>
+        /// <param name="wordToFind">The word in which it's check.</param>
+        /// <returns></returns>
+        public static List<int> FoundIndexes(string characterToVerify, string wordToFind)
+        {
+            var foundIndexes = new List<int>();
+            for (int i = wordToFind.IndexOf(characterToVerify); i > 0; i = wordToFind.IndexOf(characterToVerify, i + 1))
+            {
+                // For loop end when i=-1 (character not found)
+                foundIndexes.Add(i);
+            }
+
+            return foundIndexes;
+        }
+
+        /// <summary>
+        /// Replace the existing interrogation point by the letter to replace.
+        /// </summary>
+        /// <param name="characterToInsert">The character to be inserted instead of the existing "?".</param>
+        /// <param name="foundIndexes">The indexes where to do the replacements.</param>
+        /// <param name="richTextBoxWordToFind">The container where to do the modifications.</param>
+        public static void InsertTheLetterInsteadOfInterrogation(string characterToInsert, List<int> foundIndexes, RichTextBox richTextBoxWordToFind)
+        {
+            foreach (int i in foundIndexes)
+            {
+                richTextBoxWordToFind.Text = richTextBoxWordToFind.Text.Insert(i, characterToInsert);
+                richTextBoxWordToFind.Text = richTextBoxWordToFind.Text.Remove(i + 1, 1);
+            }
         }
     }
 }
