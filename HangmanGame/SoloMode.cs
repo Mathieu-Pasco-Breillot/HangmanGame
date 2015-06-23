@@ -29,7 +29,13 @@ namespace HangmanGame
             InitializeComponent();
             formCGM = cgm;
             wordToFind = Word.PickAWord();
+            labelWordToFindLength.Text += wordToFind.Length.ToString();
+            nbOfTries = (short)wordToFind.Length;
             labelRemainsTries2.Text = nbOfTries.ToString();
+            for (int i = 0; i < wordToFind.Length; i++)
+            {
+                richTextBoxWordToFind.Text += "?";
+            }
         }
         /// <summary>
         /// The form constructor which take the previous VersusMode form in parameter.
@@ -43,7 +49,12 @@ namespace HangmanGame
             formVM = vm;
             this.wordToFind = wordToFind;
             this.nbOfTries = nbOfTries;
+            labelWordToFindLength.Text += this.wordToFind.Length.ToString();
             labelRemainsTries2.Text = nbOfTries.ToString();
+            for (int i = 0; i < wordToFind.Length; i++)
+            {
+                richTextBoxWordToFind.Text += "?";
+            }
         }
 
         private void buttonValidationWord_Click(object sender, EventArgs e)
@@ -51,12 +62,12 @@ namespace HangmanGame
             // Delete one try on each validation call
             nbOfTries--;
             labelRemainsTries2.Text = nbOfTries.ToString();
-            // Get the word enter
-            string wordToVerify = textBoxWordToFind.Text;
-            // Get the list of bad characters entered
-            displayWrongCharacters(Word.WhichCharactersAreWrong(wordToFind, wordToVerify));
+            // Get the character entered
+            string characterToVerify = textBoxCharacterToVerify.Text;
+            List<int> foundIndexes = Word.FoundIndexes(characterToVerify, wordToFind);
+            Word.InsertTheLetterInsteadOfInterrogation(characterToVerify, foundIndexes, richTextBoxWordToFind);
 
-            if (wordToVerify == wordToFind && nbOfTries > 0)
+            if (richTextBoxWordToFind.Text == wordToFind && nbOfTries > 0)
             {
                 MessageBox.Show(
                     "! ! ! Vous avez trouvé le mot ! ! !",
@@ -79,12 +90,14 @@ namespace HangmanGame
                     Dispose();
                 }
             }
+            // Reset the textbox
+            textBoxCharacterToVerify.Clear();
         }
 
         // Check on each changement on the textBox if the character enter is valid.
         private void textBoxWordToFind_TextChanged(object sender, EventArgs e)
         {
-            Word.HasValidCharacter(textBoxWordToFind);
+            Word.HasValidCharacter(textBoxCharacterToVerify);
         }
 
         // Do stuff  to correctly shut down the application
@@ -115,16 +128,6 @@ namespace HangmanGame
         private void pseudoTextBox_TextChanged(object sender, EventArgs e)
         {
             Word.HasValidCharacter(pseudoTextBox);
-        }
-
-        // Add each dictionary entry to the datagridview as a new row.
-        private void displayWrongCharacters(Dictionary<short, char> badCharacters)
-        {
-            foreach(KeyValuePair<short, char> kvp in badCharacters)
-            {
-                string[] row = { kvp.Key.ToString(), kvp.Value.ToString() };
-                dataGridViewWrongLetters.Rows.Add(row);
-            }
         }
     }
 }

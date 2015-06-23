@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanelGlobal = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxHangman = new System.Windows.Forms.PictureBox();
-            this.textBoxWordToFind = new System.Windows.Forms.TextBox();
+            this.textBoxCharacterToVerify = new System.Windows.Forms.TextBox();
             this.buttonValidationWord = new System.Windows.Forms.Button();
             this.tableLayoutPanelInformations = new System.Windows.Forms.TableLayoutPanel();
             this.pseudoTextBox = new System.Windows.Forms.TextBox();
@@ -39,10 +39,12 @@
             this.labelRemainsTries1 = new System.Windows.Forms.Label();
             this.labelRemainsTries2 = new System.Windows.Forms.Label();
             this.dataGridViewWrongLetters = new System.Windows.Forms.DataGridView();
-            this.pendudatabaseDataSet = new HangmanGame.pendudatabaseDataSet();
-            this.pendudatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Letter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pendudatabaseDataSet = new HangmanGame.pendudatabaseDataSet();
+            this.pendudatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.labelWordToFindLength = new System.Windows.Forms.Label();
+            this.richTextBoxWordToFind = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanelGlobal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangman)).BeginInit();
             this.tableLayoutPanelInformations.SuspendLayout();
@@ -58,9 +60,10 @@
             this.tableLayoutPanelGlobal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 280F));
             this.tableLayoutPanelGlobal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelGlobal.Controls.Add(this.pictureBoxHangman, 0, 0);
-            this.tableLayoutPanelGlobal.Controls.Add(this.textBoxWordToFind, 0, 1);
+            this.tableLayoutPanelGlobal.Controls.Add(this.textBoxCharacterToVerify, 0, 1);
             this.tableLayoutPanelGlobal.Controls.Add(this.buttonValidationWord, 2, 1);
             this.tableLayoutPanelGlobal.Controls.Add(this.tableLayoutPanelInformations, 2, 0);
+            this.tableLayoutPanelGlobal.Controls.Add(this.richTextBoxWordToFind, 1, 1);
             this.tableLayoutPanelGlobal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelGlobal.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelGlobal.Name = "tableLayoutPanelGlobal";
@@ -82,19 +85,18 @@
             this.pictureBoxHangman.TabIndex = 0;
             this.pictureBoxHangman.TabStop = false;
             // 
-            // textBoxWordToFind
+            // textBoxCharacterToVerify
             // 
-            this.textBoxWordToFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxWordToFind.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tableLayoutPanelGlobal.SetColumnSpan(this.textBoxWordToFind, 2);
-            this.textBoxWordToFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBoxWordToFind.Location = new System.Drawing.Point(3, 458);
-            this.textBoxWordToFind.MaxLength = 47;
-            this.textBoxWordToFind.Name = "textBoxWordToFind";
-            this.textBoxWordToFind.Size = new System.Drawing.Size(554, 26);
-            this.textBoxWordToFind.TabIndex = 1;
-            this.textBoxWordToFind.TextChanged += new System.EventHandler(this.textBoxWordToFind_TextChanged);
-            this.textBoxWordToFind.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxWordToFind_KeyPress);
+            this.textBoxCharacterToVerify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxCharacterToVerify.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textBoxCharacterToVerify.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBoxCharacterToVerify.Location = new System.Drawing.Point(3, 458);
+            this.textBoxCharacterToVerify.MaxLength = 1;
+            this.textBoxCharacterToVerify.Name = "textBoxCharacterToVerify";
+            this.textBoxCharacterToVerify.Size = new System.Drawing.Size(274, 26);
+            this.textBoxCharacterToVerify.TabIndex = 1;
+            this.textBoxCharacterToVerify.TextChanged += new System.EventHandler(this.textBoxWordToFind_TextChanged);
+            this.textBoxCharacterToVerify.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxWordToFind_KeyPress);
             // 
             // buttonValidationWord
             // 
@@ -117,15 +119,17 @@
             this.tableLayoutPanelInformations.Controls.Add(this.labelRemainsTries1, 0, 2);
             this.tableLayoutPanelInformations.Controls.Add(this.labelRemainsTries2, 0, 3);
             this.tableLayoutPanelInformations.Controls.Add(this.dataGridViewWrongLetters, 0, 4);
+            this.tableLayoutPanelInformations.Controls.Add(this.labelWordToFindLength, 0, 5);
             this.tableLayoutPanelInformations.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelInformations.Location = new System.Drawing.Point(563, 3);
             this.tableLayoutPanelInformations.Name = "tableLayoutPanelInformations";
-            this.tableLayoutPanelInformations.RowCount = 5;
+            this.tableLayoutPanelInformations.RowCount = 6;
             this.tableLayoutPanelInformations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelInformations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelInformations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelInformations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanelInformations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelInformations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelInformations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelInformations.Size = new System.Drawing.Size(246, 444);
             this.tableLayoutPanelInformations.TabIndex = 3;
             // 
@@ -184,18 +188,8 @@
             this.dataGridViewWrongLetters.Name = "dataGridViewWrongLetters";
             this.dataGridViewWrongLetters.ReadOnly = true;
             this.dataGridViewWrongLetters.RowTemplate.Height = 24;
-            this.dataGridViewWrongLetters.Size = new System.Drawing.Size(240, 298);
+            this.dataGridViewWrongLetters.Size = new System.Drawing.Size(240, 268);
             this.dataGridViewWrongLetters.TabIndex = 4;
-            // 
-            // pendudatabaseDataSet
-            // 
-            this.pendudatabaseDataSet.DataSetName = "pendudatabaseDataSet";
-            this.pendudatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // pendudatabaseDataSetBindingSource
-            // 
-            this.pendudatabaseDataSetBindingSource.DataSource = this.pendudatabaseDataSet;
-            this.pendudatabaseDataSetBindingSource.Position = 0;
             // 
             // Position
             // 
@@ -210,6 +204,40 @@
             this.Letter.Name = "Letter";
             this.Letter.ReadOnly = true;
             this.Letter.ToolTipText = "The wrong letter entered corresponding to the associated position.";
+            // 
+            // pendudatabaseDataSet
+            // 
+            this.pendudatabaseDataSet.DataSetName = "pendudatabaseDataSet";
+            this.pendudatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // pendudatabaseDataSetBindingSource
+            // 
+            this.pendudatabaseDataSetBindingSource.DataSource = this.pendudatabaseDataSet;
+            this.pendudatabaseDataSetBindingSource.Position = 0;
+            // 
+            // labelWordToFindLength
+            // 
+            this.labelWordToFindLength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelWordToFindLength.AutoSize = true;
+            this.labelWordToFindLength.Location = new System.Drawing.Point(3, 420);
+            this.labelWordToFindLength.Name = "labelWordToFindLength";
+            this.labelWordToFindLength.Size = new System.Drawing.Size(240, 18);
+            this.labelWordToFindLength.TabIndex = 5;
+            this.labelWordToFindLength.Text = "Longueur du mot : ";
+            // 
+            // richTextBoxWordToFind
+            // 
+            this.richTextBoxWordToFind.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxWordToFind.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxWordToFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.richTextBoxWordToFind.Location = new System.Drawing.Point(283, 458);
+            this.richTextBoxWordToFind.Margin = new System.Windows.Forms.Padding(3, 8, 3, 9);
+            this.richTextBoxWordToFind.Multiline = false;
+            this.richTextBoxWordToFind.Name = "richTextBoxWordToFind";
+            this.richTextBoxWordToFind.ReadOnly = true;
+            this.richTextBoxWordToFind.Size = new System.Drawing.Size(274, 26);
+            this.richTextBoxWordToFind.TabIndex = 4;
+            this.richTextBoxWordToFind.Text = "";
             // 
             // SoloMode
             // 
@@ -240,7 +268,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelGlobal;
         private System.Windows.Forms.PictureBox pictureBoxHangman;
-        private System.Windows.Forms.TextBox textBoxWordToFind;
+        private System.Windows.Forms.TextBox textBoxCharacterToVerify;
         private System.Windows.Forms.Button buttonValidationWord;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelInformations;
         private System.Windows.Forms.TextBox pseudoTextBox;
@@ -252,6 +280,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Letter;
         private pendudatabaseDataSet pendudatabaseDataSet;
         private System.Windows.Forms.BindingSource pendudatabaseDataSetBindingSource;
+        private System.Windows.Forms.Label labelWordToFindLength;
+        private System.Windows.Forms.RichTextBox richTextBoxWordToFind;
     }
 }
 
