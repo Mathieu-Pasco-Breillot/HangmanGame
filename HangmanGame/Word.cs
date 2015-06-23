@@ -107,7 +107,7 @@ namespace HangmanGame
         }
         
         /// <summary>
-        /// Get a random word from the file which contains more than 337 000 words.
+        /// Get a random word from the file which contains more than 336 500 words.
         /// </summary>
         /// <returns>The word picked in a random way</returns>
         public static string PickAWord()
