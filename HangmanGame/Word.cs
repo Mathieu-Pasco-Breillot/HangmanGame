@@ -46,7 +46,7 @@ namespace HangmanGame
                 }
             }
         }
-        
+
         /// <summary>
         /// Check if the character just type is a valid one.
         /// </summary>
@@ -77,7 +77,7 @@ namespace HangmanGame
                 }
             }
         }
-        
+
         /// <summary>
         /// Verify each character one by one if they are the same at the same position, if not it's added to the dictionary.
         /// </summary>
@@ -87,7 +87,7 @@ namespace HangmanGame
         public static Dictionary<short, char> WhichCharactersAreWrong(string wordToFind, string wordToVerify)
         {
             int lentghToGoMax;
-            if(wordToFind.Length < wordToVerify.Length)
+            if (wordToFind.Length < wordToVerify.Length)
             {
                 lentghToGoMax = wordToFind.Length;
             }
@@ -105,7 +105,7 @@ namespace HangmanGame
             }
             return badCharacters;
         }
-        
+
         /// <summary>
         /// Get a random word from the file which contains more than 336 500 words.
         /// </summary>
@@ -208,7 +208,7 @@ namespace HangmanGame
             r.Close();
             return count;
         }
-        
+
         /// <summary>
         /// Get all the indexes of the character for the given word.
         /// </summary>
@@ -218,7 +218,7 @@ namespace HangmanGame
         public static List<int> FoundIndexes(string characterToVerify, string wordToFind)
         {
             var foundIndexes = new List<int>();
-            for (int i = wordToFind.IndexOf(characterToVerify); i > 0; i = wordToFind.IndexOf(characterToVerify, i + 1))
+            for (int i = wordToFind.IndexOf(characterToVerify); i >= 0; i = wordToFind.IndexOf(characterToVerify, i + 1))
             {
                 // For loop end when i=-1 (character not found)
                 foundIndexes.Add(i);
@@ -240,6 +240,28 @@ namespace HangmanGame
                 richTextBoxWordToFind.Text = richTextBoxWordToFind.Text.Insert(i, characterToInsert);
                 richTextBoxWordToFind.Text = richTextBoxWordToFind.Text.Remove(i + 1, 1);
             }
+        }
+
+        /// <summary>
+        /// Check if the character is in the word.
+        /// </summary>
+        /// <param name="c">The character entered by the player</param>
+        /// <param name="word">The word to check in.</param>
+        /// <returns>True if it's present.</returns>
+        public static bool IsContained(string c, string word)
+        {
+            bool resultat = false;
+            if (c.Length != 0)
+            {
+                foreach (char ch in word)
+                {
+                    if (c == ch.ToString())
+                    {
+                        resultat = true;
+                    }
+                }
+            }
+            return resultat;
         }
     }
 }

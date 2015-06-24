@@ -59,11 +59,14 @@ namespace HangmanGame
 
         private void buttonValidationWord_Click(object sender, EventArgs e)
         {
-            // Delete one try on each validation call
-            nbOfTries--;
-            labelRemainsTries2.Text = nbOfTries.ToString();
             // Get the character entered
             string characterToVerify = textBoxCharacterToVerify.Text;
+            if (!Word.IsContained(characterToVerify, wordToFind) && characterToVerify.Length != 0)
+            {
+                // Delete one try on each wrong try
+                nbOfTries--;
+                labelRemainsTries2.Text = nbOfTries.ToString();
+            }
             List<int> foundIndexes = Word.FoundIndexes(characterToVerify, wordToFind);
             Word.InsertTheLetterInsteadOfInterrogation(characterToVerify, foundIndexes, richTextBoxWordToFind);
 
