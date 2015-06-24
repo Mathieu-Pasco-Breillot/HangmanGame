@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HangmanGame
 {
-    /// <summary>
-    /// VersusMode Class
-    /// </summary>
-    public partial class VersusMode : Form
+	/// <summary>
+	/// VersusMode Class
+	/// </summary>
+	public partial class VersusMode : Form
     {
         // Global Variables
         ChooseGameMode formCGM;
