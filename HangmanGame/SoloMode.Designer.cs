@@ -176,7 +176,7 @@
 			this.labelRemainsTries2.Name = "labelRemainsTries2";
 			this.labelRemainsTries2.Size = new System.Drawing.Size(240, 36);
 			this.labelRemainsTries2.TabIndex = 3;
-			this.labelRemainsTries2.Text = "9";
+			this.labelRemainsTries2.Text = "8";
 			this.labelRemainsTries2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// dataGridViewWrongLetters
