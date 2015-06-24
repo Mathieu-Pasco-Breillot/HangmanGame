@@ -63,9 +63,9 @@ namespace HangmanGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Hangman_0 {
+        internal static System.Drawing.Bitmap Hangman0 {
             get {
-                object obj = ResourceManager.GetObject("Hangman-0", resourceCulture);
+                object obj = ResourceManager.GetObject("Hangman0", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace HangmanGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Hangman_1 {
+        internal static System.Drawing.Bitmap Hangman1 {
             get {
-                object obj = ResourceManager.GetObject("Hangman-1", resourceCulture);
+                object obj = ResourceManager.GetObject("Hangman1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace HangmanGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Hangman_2 {
+        internal static System.Drawing.Bitmap Hangman2 {
             get {
-                object obj = ResourceManager.GetObject("Hangman-2", resourceCulture);
+                object obj = ResourceManager.GetObject("Hangman2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace HangmanGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Hangman_3 {
+        internal static System.Drawing.Bitmap Hangman3 {
             get {
-                object obj = ResourceManager.GetObject("Hangman-3", resourceCulture);
+                object obj = ResourceManager.GetObject("Hangman3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace HangmanGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Hangman_4 {
+        internal static System.Drawing.Bitmap Hangman4 {
             get {
-                object obj = ResourceManager.GetObject("Hangman-4", resourceCulture);
+                object obj = ResourceManager.GetObject("Hangman4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace HangmanGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Hangman_5 {
+        internal static System.Drawing.Bitmap Hangman5 {
             get {
-                object obj = ResourceManager.GetObject("Hangman-5", resourceCulture);
+                object obj = ResourceManager.GetObject("Hangman5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace HangmanGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Hangman_6 {
+        internal static System.Drawing.Bitmap Hangman6 {
             get {
-                object obj = ResourceManager.GetObject("Hangman-6", resourceCulture);
+                object obj = ResourceManager.GetObject("Hangman6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace HangmanGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Hangman_7 {
+        internal static System.Drawing.Bitmap Hangman7 {
             get {
-                object obj = ResourceManager.GetObject("Hangman-7", resourceCulture);
+                object obj = ResourceManager.GetObject("Hangman7", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,19 +143,9 @@ namespace HangmanGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Hangman_8 {
+        internal static System.Drawing.Bitmap Hangman8 {
             get {
-                object obj = ResourceManager.GetObject("Hangman-8", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Hangman_final {
-            get {
-                object obj = ResourceManager.GetObject("Hangman-final", resourceCulture);
+                object obj = ResourceManager.GetObject("Hangman8", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

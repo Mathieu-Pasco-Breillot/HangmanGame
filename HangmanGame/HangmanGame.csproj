@@ -147,34 +147,15 @@
     <None Include="Resources\Hangman-0.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Hangman-1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hangman-2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hangman-3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hangman-4.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hangman-5.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hangman-6.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hangman-7.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hangman-8.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hangman-final.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resources\dictionnaire.txt" />
+    <Content Include="Resources\Hangman-1.png" />
+    <Content Include="Resources\Hangman-2.png" />
+    <Content Include="Resources\Hangman-3.png" />
+    <Content Include="Resources\Hangman-4.png" />
+    <Content Include="Resources\Hangman-5.png" />
+    <Content Include="Resources\Hangman-6.png" />
+    <Content Include="Resources\Hangman-7.png" />
+    <Content Include="Resources\Hangman-8.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">

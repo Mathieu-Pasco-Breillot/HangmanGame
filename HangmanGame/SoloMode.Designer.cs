@@ -39,12 +39,12 @@
 			this.labelRemainsTries1 = new System.Windows.Forms.Label();
 			this.labelRemainsTries2 = new System.Windows.Forms.Label();
 			this.dataGridViewWrongLetters = new System.Windows.Forms.DataGridView();
+			this.Letter = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.labelWordToFindLength = new System.Windows.Forms.Label();
 			this.richTextBoxWordToFind = new System.Windows.Forms.RichTextBox();
+			this.labelElapsedTime = new System.Windows.Forms.Label();
 			this.pendudatabaseDataSet = new HangmanGame.pendudatabaseDataSet();
 			this.pendudatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.labelElapsedTime = new System.Windows.Forms.Label();
-			this.Letter = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.timerRefreshElapsedTime = new System.Windows.Forms.Timer(this.components);
 			this.tableLayoutPanelGlobal.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangman)).BeginInit();
@@ -78,10 +78,10 @@
 			// 
 			// pictureBoxHangman
 			// 
-			this.pictureBoxHangman.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.pictureBoxHangman.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.tableLayoutPanelGlobal.SetColumnSpan(this.pictureBoxHangman, 2);
 			this.pictureBoxHangman.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pictureBoxHangman.Image = global::HangmanGame.Properties.Resources.Hangman_0;
+			this.pictureBoxHangman.Image = global::HangmanGame.Properties.Resources.Hangman0;
 			this.pictureBoxHangman.Location = new System.Drawing.Point(3, 3);
 			this.pictureBoxHangman.Name = "pictureBoxHangman";
 			this.pictureBoxHangman.Size = new System.Drawing.Size(554, 444);
@@ -195,6 +195,14 @@
 			this.dataGridViewWrongLetters.Size = new System.Drawing.Size(240, 268);
 			this.dataGridViewWrongLetters.TabIndex = 4;
 			// 
+			// Letter
+			// 
+			this.Letter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.Letter.HeaderText = "Lettres";
+			this.Letter.Name = "Letter";
+			this.Letter.ReadOnly = true;
+			this.Letter.ToolTipText = "Chaque caractères déjà essayé est affiché ici.";
+			// 
 			// labelWordToFindLength
 			// 
 			this.labelWordToFindLength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -219,16 +227,6 @@
 			this.richTextBoxWordToFind.TabIndex = 4;
 			this.richTextBoxWordToFind.Text = "";
 			// 
-			// pendudatabaseDataSet
-			// 
-			this.pendudatabaseDataSet.DataSetName = "pendudatabaseDataSet";
-			this.pendudatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
-			// pendudatabaseDataSetBindingSource
-			// 
-			this.pendudatabaseDataSetBindingSource.DataSource = this.pendudatabaseDataSet;
-			this.pendudatabaseDataSetBindingSource.Position = 0;
-			// 
 			// labelElapsedTime
 			// 
 			this.labelElapsedTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -241,13 +239,15 @@
 			this.labelElapsedTime.Text = "Temps écoulé : ";
 			this.labelElapsedTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// Letter
+			// pendudatabaseDataSet
 			// 
-			this.Letter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.Letter.HeaderText = "Lettres";
-			this.Letter.Name = "Letter";
-			this.Letter.ReadOnly = true;
-			this.Letter.ToolTipText = "Chaque caractères déjà essayé est affiché ici.";
+			this.pendudatabaseDataSet.DataSetName = "pendudatabaseDataSet";
+			this.pendudatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			// 
+			// pendudatabaseDataSetBindingSource
+			// 
+			this.pendudatabaseDataSetBindingSource.DataSource = this.pendudatabaseDataSet;
+			this.pendudatabaseDataSetBindingSource.Position = 0;
 			// 
 			// timerRefreshElapsedTime
 			// 

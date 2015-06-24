@@ -14,7 +14,7 @@ namespace HangmanGame
 		ChooseGameMode formCGM;
 		VersusMode formVM;
 		string wordToFind;
-		short nbOfTries = 5;
+		short nbOfTries = 8;
 		Stopwatch timer = new Stopwatch();
 		/// <summary>
 		/// The form constructor which take the previous ChooseGameMode form in parameter.
@@ -26,7 +26,7 @@ namespace HangmanGame
 			formCGM = cgm;
 			wordToFind = Word.PickAWord();
 			labelWordToFindLength.Text += wordToFind.Length.ToString();
-			nbOfTries = (short)wordToFind.Length;
+			//nbOfTries = (short)wordToFind.Length;
 			labelRemainsTries2.Text = nbOfTries.ToString();
 			for (int i = 0; i < wordToFind.Length; i++)
 			{
@@ -160,40 +160,31 @@ namespace HangmanGame
 			switch(tries)
 			{
 				case 0:
-					pictureBoxHangman.Image = Properties.Resources.Hangman_final;
+					pictureBoxHangman.Image = Properties.Resources.Hangman8;
 					break;
 				case 1:
-					pictureBoxHangman.Image = Properties.Resources.Hangman_8;
+					pictureBoxHangman.Image = Properties.Resources.Hangman7;
 					break;
 				case 2:
-					pictureBoxHangman.Image = Properties.Resources.Hangman_7;
+					pictureBoxHangman.Image = Properties.Resources.Hangman6;
 					break;
 				case 3:
-					pictureBoxHangman.Image = Properties.Resources.Hangman_6;
+					pictureBoxHangman.Image = Properties.Resources.Hangman5;
 					break;
 				case 4:
-					pictureBoxHangman.Image = Properties.Resources.Hangman_5;
+					pictureBoxHangman.Image = Properties.Resources.Hangman4;
 					break;
 				case 5:
-					pictureBoxHangman.Image = Properties.Resources.Hangman_4;
+					pictureBoxHangman.Image = Properties.Resources.Hangman3;
 					break;
 				case 6:
-					pictureBoxHangman.Image = Properties.Resources.Hangman_3;
+					pictureBoxHangman.Image = Properties.Resources.Hangman2;
 					break;
 				case 7:
-					pictureBoxHangman.Image = Properties.Resources.Hangman_2;
+					pictureBoxHangman.Image = Properties.Resources.Hangman1;
 					break;
 				case 8:
-					pictureBoxHangman.Image = Properties.Resources.Hangman_1;
-					break;
-				case 9:
-					pictureBoxHangman.Image = Properties.Resources.Hangman_0;
-					break;
-				case 10:
-					pictureBoxHangman.Image = Properties.Resources.Hangman_0;
-					break;
-				default:
-					pictureBoxHangman.Image = Properties.Resources.Hangman_0;
+					pictureBoxHangman.Image = Properties.Resources.Hangman0;
 					break;
 			}
 		}
