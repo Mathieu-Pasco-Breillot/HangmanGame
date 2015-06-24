@@ -55,6 +55,7 @@ namespace HangmanGame
 			}
 		}
 
+		// Do all the stuff when we try to verify 
 		private void buttonValidationWord_Click(object sender, EventArgs e)
 		{
 			// Get the character entered
@@ -62,7 +63,7 @@ namespace HangmanGame
 			if (!Word.IsContained(characterToVerify, wordToFind) && characterToVerify.Length != 0)
 			{
 				// Delete one try on each wrong try
-				nbOfTries--;
+				changeHangmanPicture(--nbOfTries);
 				labelRemainsTries2.Text = nbOfTries.ToString();
 			}
 			List<int> foundIndexes = Word.FoundIndexes(characterToVerify, wordToFind);
@@ -76,6 +77,8 @@ namespace HangmanGame
 
 			if (richTextBoxWordToFind.Text == wordToFind && nbOfTries > 0)
 			{
+				timer.Stop();
+				timerRefreshElapsedTime.Stop();
 				MessageBox.Show(
 					"! ! ! Vous avez trouvé le mot ! ! !",
 					"Félicitations",
@@ -150,6 +153,49 @@ namespace HangmanGame
 		private void timerRefreshElapsedTime_Tick(object sender, EventArgs e)
 		{
 			displayElapsedTime(ref timer, ref labelElapsedTime);
+		}
+
+		private void changeHangmanPicture(int tries)
+		{
+			switch(tries)
+			{
+				case 0:
+					pictureBoxHangman.Image = Properties.Resources.Hangman_final;
+					break;
+				case 1:
+					pictureBoxHangman.Image = Properties.Resources.Hangman_8;
+					break;
+				case 2:
+					pictureBoxHangman.Image = Properties.Resources.Hangman_7;
+					break;
+				case 3:
+					pictureBoxHangman.Image = Properties.Resources.Hangman_6;
+					break;
+				case 4:
+					pictureBoxHangman.Image = Properties.Resources.Hangman_5;
+					break;
+				case 5:
+					pictureBoxHangman.Image = Properties.Resources.Hangman_4;
+					break;
+				case 6:
+					pictureBoxHangman.Image = Properties.Resources.Hangman_3;
+					break;
+				case 7:
+					pictureBoxHangman.Image = Properties.Resources.Hangman_2;
+					break;
+				case 8:
+					pictureBoxHangman.Image = Properties.Resources.Hangman_1;
+					break;
+				case 9:
+					pictureBoxHangman.Image = Properties.Resources.Hangman_0;
+					break;
+				case 10:
+					pictureBoxHangman.Image = Properties.Resources.Hangman_0;
+					break;
+				default:
+					pictureBoxHangman.Image = Properties.Resources.Hangman_0;
+					break;
+			}
 		}
 	}
 }
