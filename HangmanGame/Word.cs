@@ -11,14 +11,33 @@ namespace HangmanGame
 	/// </summary>
 	public static class Word
     {
-        private static List<char> Letters = new List<char>
+		private static ushort nbVowels = 0, nbConsonants = 0;
+		private static List<char> Letters = new List<char>
         { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '-'};
 
-        /// <summary>
-        /// Check if the character just type is a valid one.
-        /// </summary>
-        /// <param name="word">The textbox which contains the word enter by the player</param>
-        public static void HasValidCharacter(TextBox word)
+		public static ushort NbVowels
+		{
+			get
+			{
+				return nbVowels;
+			}
+		}
+
+		public static ushort NbConsonants
+		{
+			get
+			{
+				return nbConsonants;
+			}
+		}
+
+
+
+		/// <summary>
+		/// Check if the character just type is a valid one.
+		/// </summary>
+		/// <param name="word">The textbox which contains the word enter by the player</param>
+		public static void HasValidCharacter(TextBox word)
         {
             // Shortcut to textbox length
             int tbLength = word.Text.Length;
@@ -261,5 +280,115 @@ namespace HangmanGame
             }
             return resultat;
         }
-    }
+
+		/// <summary>
+		/// Do the sum of the letters value for the word.
+		/// </summary>
+		/// <param name="word"></param>
+		/// <returns>A float value which represents the difficulty of the word.</returns>
+		public static float SumLettersByPresence(string word)
+		{
+			float s = 0;
+			foreach (char c in word)
+			{
+				switch (c)
+				{
+					case 'A':
+						s += 9.42F;
+						break;
+					case 'B':
+						s += 1.02F;
+						break;
+					case 'C':
+						s += 2.64F;
+						break;
+					case 'D':
+						s += 3.39F;
+						break;
+					case 'E':
+						s += 15.87F;
+						break;
+					case 'F':
+						s += 0.95F;
+						break;
+					case 'G':
+						s += 1.04F;
+						break;
+					case 'H':
+						s += 0.77F;
+						break;
+					case 'I':
+						s += 8.41F;
+						break;
+					case 'J':
+						s += 0.89F;
+						break;
+					case 'K':
+						s += 0.06F;
+						break;
+					case 'L':
+						s += 5.24F;
+						break;
+					case 'M':
+						s += 3.242F;
+						break;
+					case 'N':
+						s += 7.15F;
+						break;
+					case 'O':
+						s += 5.14F;
+						break;
+					case 'P':
+						s += 2.86F;
+						break;
+					case 'Q':
+						s += 1.06F;
+						break;
+					case 'R':
+						s += 6.46F;
+						break;
+					case 'S':
+						s += 7.90F;
+						break;
+					case 'T':
+						s += 7.26F;
+						break;
+					case 'U':
+						s += 6.24F;
+						break;
+					case 'V':
+						s += 2.15F;
+						break;
+					case 'W':
+						s += 0.12F;
+						break;
+					case 'X':
+						s += 0.30F;
+						break;
+					case 'Y':
+						s += 0.24F;
+						break;
+					case 'Z':
+						s += 0.32F;
+						break;
+				}
+			}
+			return s;
+		}
+
+		public static void CountNbVowelsConsonants(string word)
+		{
+			foreach (char c in word)
+			{
+				if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == 'Y')
+				{
+					nbVowels++;
+				}
+				else
+				{
+					nbConsonants++;
+				}
+			}
+		}
+	}
 }

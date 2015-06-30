@@ -61,7 +61,7 @@ namespace HangmanGame
 		{
 			// Get the character entered
 			string characterToVerify = textBoxCharacterToVerify.Text;
-			if (!isAlreadyTested(characterToVerify))
+			if (!isAlreadyTested(characterToVerify) && characterToVerify != "")
 			{
 				if (!Word.IsContained(characterToVerify, wordToFind) && characterToVerify.Length != 0)
 				{
@@ -82,8 +82,10 @@ namespace HangmanGame
 				{
 					timer.Stop();
 					timerRefreshElapsedTime.Stop();
+					float finalScore = scoreComputation(wordToFind);
 					MessageBox.Show(
-						"! ! ! Vous avez trouvé le mot ! ! !",
+						"! ! ! Vous avez trouvé le mot ! ! !" + "\nVotre score : " + finalScore + " points !" +
+						"\nVotre temps : " + displayElapsedTime(timer.Elapsed),
 						"Félicitations",
 						MessageBoxButtons.OK,
 						MessageBoxIcon.Exclamation,
@@ -102,7 +104,7 @@ namespace HangmanGame
 									MessageBoxDefaultButton.Button1);
 						Dispose();
 					}
-				} 
+				}
 			}
 		}
 
@@ -208,13 +210,30 @@ namespace HangmanGame
 			}
 			label.Text = "Temps écoulé : " + elapsedTime;
 		}
+		private string displayElapsedTime(TimeSpan ts)
+		{
+			string elapsedTime = "";
+			if (ts.Hours >= 1)
+			{
+				elapsedTime = string.Format("{0:00} h {1:00} min {2:00} s", ts.Hours, ts.Minutes, ts.Seconds);
+			}
+			else if (ts.Minutes >= 1)
+			{
+				elapsedTime = string.Format("{0:00} min {1:00} s", ts.Minutes, ts.Seconds);
+			}
+			else
+			{
+				elapsedTime = string.Format("{0:00} s", ts.Seconds);
+			}
+			return elapsedTime;
+		}
 
 		/// <summary>
 		/// Verify if the letter enter has already been tested
 		/// </summary>
 		/// <param name="characterToVerify">The character entered which needs to be check</param>
 		/// <returns></returns>
-		private bool isAlreadyTested (string characterToVerify)
+		private bool isAlreadyTested(string characterToVerify)
 		{
 			foreach (DataGridViewRow wrongLetter in dataGridViewWrongLetters.Rows)
 			{
@@ -224,10 +243,30 @@ namespace HangmanGame
 					if (cellValue != null && cellValue != "" && characterToVerify == cellValue)
 					{
 						return true;
-					} 
+					}
 				}
 			}
 			return false;
+		}
+
+		private float scoreComputation(string word)
+		{
+			float S = 0, coef = 1, T = (timer.ElapsedMilliseconds / 1000);
+			// Do the maths to get the word value
+			S = Word.SumLettersByPresence(word);
+			// Count the number of vowels and consonants
+			Word.CountNbVowelsConsonants(word);
+			if (Word.NbConsonants > Word.NbVowels)
+			{
+				coef = 1.3F;
+			}
+			else
+			{
+				coef = 0.75F;
+			}
+			float difficultyLevel = S * coef;
+			float finalScore = difficultyLevel * nbOfTries * (1 / (T/10));
+            return finalScore;
 		}
 	}
 }
