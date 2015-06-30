@@ -80,11 +80,6 @@
     <Compile Include="ChooseGameMode.Designer.cs">
       <DependentUpon>ChooseGameMode.cs</DependentUpon>
     </Compile>
-    <Compile Include="pendudatabaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>pendudatabaseDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="SoloMode.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,17 +114,6 @@
     <EmbeddedResource Include="VersusMode.resx">
       <DependentUpon>VersusMode.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="pendudatabaseDataSet.xsc">
-      <DependentUpon>pendudatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="pendudatabaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>pendudatabaseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="pendudatabaseDataSet.xss">
-      <DependentUpon>pendudatabaseDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

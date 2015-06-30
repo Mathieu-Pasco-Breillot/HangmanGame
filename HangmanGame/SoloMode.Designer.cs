@@ -43,15 +43,11 @@
 			this.labelWordToFindLength = new System.Windows.Forms.Label();
 			this.richTextBoxWordToFind = new System.Windows.Forms.RichTextBox();
 			this.labelElapsedTime = new System.Windows.Forms.Label();
-			this.pendudatabaseDataSet = new HangmanGame.pendudatabaseDataSet();
-			this.pendudatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.timerRefreshElapsedTime = new System.Windows.Forms.Timer(this.components);
 			this.tableLayoutPanelGlobal.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangman)).BeginInit();
 			this.tableLayoutPanelInformations.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewWrongLetters)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pendudatabaseDataSet)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pendudatabaseDataSetBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanelGlobal
@@ -107,7 +103,8 @@
 			this.buttonValidationWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
 			this.buttonValidationWord.Location = new System.Drawing.Point(563, 453);
 			this.buttonValidationWord.Name = "buttonValidationWord";
-			this.buttonValidationWord.Size = new System.Drawing.Size(246, 34);
+			this.tableLayoutPanelGlobal.SetRowSpan(this.buttonValidationWord, 2);
+			this.buttonValidationWord.Size = new System.Drawing.Size(246, 67);
 			this.buttonValidationWord.TabIndex = 2;
 			this.buttonValidationWord.Text = "Valider";
 			this.buttonValidationWord.UseVisualStyleBackColor = true;
@@ -239,16 +236,6 @@
 			this.labelElapsedTime.Text = "Temps écoulé : ";
 			this.labelElapsedTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// pendudatabaseDataSet
-			// 
-			this.pendudatabaseDataSet.DataSetName = "pendudatabaseDataSet";
-			this.pendudatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
-			// pendudatabaseDataSetBindingSource
-			// 
-			this.pendudatabaseDataSetBindingSource.DataSource = this.pendudatabaseDataSet;
-			this.pendudatabaseDataSetBindingSource.Position = 0;
-			// 
 			// timerRefreshElapsedTime
 			// 
 			this.timerRefreshElapsedTime.Enabled = true;
@@ -274,8 +261,6 @@
 			this.tableLayoutPanelInformations.ResumeLayout(false);
 			this.tableLayoutPanelInformations.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewWrongLetters)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pendudatabaseDataSet)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pendudatabaseDataSetBindingSource)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -292,7 +277,6 @@
         private System.Windows.Forms.Label labelRemainsTries1;
         private System.Windows.Forms.Label labelRemainsTries2;
         private System.Windows.Forms.DataGridView dataGridViewWrongLetters;
-        private pendudatabaseDataSet pendudatabaseDataSet;
         private System.Windows.Forms.BindingSource pendudatabaseDataSetBindingSource;
         private System.Windows.Forms.Label labelWordToFindLength;
         private System.Windows.Forms.RichTextBox richTextBoxWordToFind;

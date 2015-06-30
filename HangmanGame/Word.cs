@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HangmanGame
 {
-    /// <summary>
-    /// The word class to do some verifications on words.
-    /// </summary>
-    public static class Word
+	/// <summary>
+	/// The word class to do some verifications on words.
+	/// </summary>
+	public static class Word
     {
         private static List<char> Letters = new List<char>
         { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '-'};

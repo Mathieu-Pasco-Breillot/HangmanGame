@@ -27,6 +27,7 @@ namespace HangmanGame
 			wordToFind = Word.PickAWord();
 			labelWordToFindLength.Text += wordToFind.Length.ToString();
 			//nbOfTries = (short)wordToFind.Length;
+			dataGridViewWrongLetters.Rows.Clear();
 			labelRemainsTries2.Text = nbOfTries.ToString();
 			for (int i = 0; i < wordToFind.Length; i++)
 			{
@@ -60,45 +61,48 @@ namespace HangmanGame
 		{
 			// Get the character entered
 			string characterToVerify = textBoxCharacterToVerify.Text;
-			if (!Word.IsContained(characterToVerify, wordToFind) && characterToVerify.Length != 0)
+			if (!isAlreadyTested(characterToVerify))
 			{
-				// Delete one try on each wrong try
-				changeHangmanPicture(--nbOfTries);
-				labelRemainsTries2.Text = nbOfTries.ToString();
-			}
-			List<int> foundIndexes = Word.FoundIndexes(characterToVerify, wordToFind);
-			Word.InsertTheLetterInsteadOfInterrogation(characterToVerify, foundIndexes, richTextBoxWordToFind);
-
-			// Insert the character inside the datagridview
-			addCharacterToDataGrid(characterToVerify);
-
-			// Reset the textbox
-			textBoxCharacterToVerify.Clear();
-
-			if (richTextBoxWordToFind.Text == wordToFind && nbOfTries > 0)
-			{
-				timer.Stop();
-				timerRefreshElapsedTime.Stop();
-				MessageBox.Show(
-					"! ! ! Vous avez trouvé le mot ! ! !",
-					"Félicitations",
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Exclamation,
-					MessageBoxDefaultButton.Button1);
-				Dispose();
-			}
-			else
-			{
-				if (nbOfTries == 0)
+				if (!Word.IsContained(characterToVerify, wordToFind) && characterToVerify.Length != 0)
 				{
+					// Delete one try on each wrong try
+					changeHangmanPicture(--nbOfTries);
+					labelRemainsTries2.Text = nbOfTries.ToString();
+				}
+				List<int> foundIndexes = Word.FoundIndexes(characterToVerify, wordToFind);
+				Word.InsertTheLetterInsteadOfInterrogation(characterToVerify, foundIndexes, richTextBoxWordToFind);
+
+				// Insert the character inside the datagridview
+				addCharacterToDataGrid(characterToVerify);
+
+				// Reset the textbox
+				textBoxCharacterToVerify.Clear();
+
+				if (richTextBoxWordToFind.Text == wordToFind && nbOfTries > 0)
+				{
+					timer.Stop();
+					timerRefreshElapsedTime.Stop();
 					MessageBox.Show(
-								"Vous n'avez pas trouvé le mot... \nLe mot à trouver était : " + wordToFind,
-								"C'est dommage",
-								MessageBoxButtons.OK,
-								MessageBoxIcon.Error,
-								MessageBoxDefaultButton.Button1);
+						"! ! ! Vous avez trouvé le mot ! ! !",
+						"Félicitations",
+						MessageBoxButtons.OK,
+						MessageBoxIcon.Exclamation,
+						MessageBoxDefaultButton.Button1);
 					Dispose();
 				}
+				else
+				{
+					if (nbOfTries == 0)
+					{
+						MessageBox.Show(
+									"Vous n'avez pas trouvé le mot... \nLe mot à trouver était : " + wordToFind,
+									"C'est dommage",
+									MessageBoxButtons.OK,
+									MessageBoxIcon.Error,
+									MessageBoxDefaultButton.Button1);
+						Dispose();
+					}
+				} 
 			}
 		}
 
@@ -144,20 +148,14 @@ namespace HangmanGame
 			dataGridViewWrongLetters.Sort(dataGridViewWrongLetters.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
 		}
 
-		private void displayElapsedTime(ref Stopwatch timer, ref Label labelElapsedTime)
-		{
-			long time = timer.ElapsedMilliseconds;
-			labelElapsedTime.Text = "Temps écoulé : " + time;
-		}
-
 		private void timerRefreshElapsedTime_Tick(object sender, EventArgs e)
 		{
-			displayElapsedTime(ref timer, ref labelElapsedTime);
+			displayElapsedTime(timer.Elapsed, labelElapsedTime);
 		}
 
 		private void changeHangmanPicture(int tries)
 		{
-			switch(tries)
+			switch (tries)
 			{
 				case 0:
 					pictureBoxHangman.Image = Properties.Resources.Hangman8;
@@ -187,6 +185,49 @@ namespace HangmanGame
 					pictureBoxHangman.Image = Properties.Resources.Hangman0;
 					break;
 			}
+		}
+
+		/// <summary>
+		/// Displays the elapsed time in the GUI
+		/// Starts when the action on the start button has been triggered
+		/// </summary>
+		private void displayElapsedTime(TimeSpan ts, Label label)
+		{
+			string elapsedTime = "";
+			if (ts.Hours >= 1)
+			{
+				elapsedTime = string.Format("{0:00} h {1:00} min {2:00} s", ts.Hours, ts.Minutes, ts.Seconds);
+			}
+			else if (ts.Minutes >= 1)
+			{
+				elapsedTime = string.Format("{0:00} min {1:00} s", ts.Minutes, ts.Seconds);
+			}
+			else
+			{
+				elapsedTime = string.Format("{0:00} s", ts.Seconds);
+			}
+			label.Text = "Temps écoulé : " + elapsedTime;
+		}
+
+		/// <summary>
+		/// Verify if the letter enter has already been tested
+		/// </summary>
+		/// <param name="characterToVerify">The character entered which needs to be check</param>
+		/// <returns></returns>
+		private bool isAlreadyTested (string characterToVerify)
+		{
+			foreach (DataGridViewRow wrongLetter in dataGridViewWrongLetters.Rows)
+			{
+				if (wrongLetter.Cells[0].Value != null)
+				{
+					string cellValue = wrongLetter.Cells[0].Value.ToString();
+					if (cellValue != null && cellValue != "" && characterToVerify == cellValue)
+					{
+						return true;
+					} 
+				}
+			}
+			return false;
 		}
 	}
 }
