@@ -14,7 +14,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Fikkwix\Documents\Visual Studio 2015\Projects\HangmanGame\Deployment\stable\</PublishUrl>
+    <PublishUrl>C:\Users\Fikkwix\Documents\Visual Studio 2015\Projects\Mathieu-Pasco-Breillot.github.io\Deployment\HangmanGame\stable\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
-    <InstallUrl>https://github.com/Mathieu-Pasco-Breillot/HangmanGame/tree/master/Deployment/stable/</InstallUrl>
+    <InstallUrl>https://github.com/Mathieu-Pasco-Breillot/Deployment/HangmanGame/stable/</InstallUrl>
     <TargetCulture>fr</TargetCulture>
     <ProductName>HangmanGame</ProductName>
     <PublisherName>PASCO-BREILLOT Mathieu</PublisherName>
@@ -32,7 +32,7 @@
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
