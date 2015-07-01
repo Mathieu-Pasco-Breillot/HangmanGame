@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Windows.Forms;
 
 namespace HangmanGame
@@ -15,6 +17,9 @@ namespace HangmanGame
 		private static List<char> Letters = new List<char>
         { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '-'};
 
+		/// <summary>
+		/// The number of vowels present in the word
+		/// </summary>
 		public static ushort NbVowels
 		{
 			get
@@ -23,6 +28,9 @@ namespace HangmanGame
 			}
 		}
 
+		/// <summary>
+		/// The number of consonants present in the word
+		/// </summary>
 		public static ushort NbConsonants
 		{
 			get
@@ -30,8 +38,6 @@ namespace HangmanGame
 				return nbConsonants;
 			}
 		}
-
-
 
 		/// <summary>
 		/// Check if the character just type is a valid one.
@@ -129,21 +135,29 @@ namespace HangmanGame
         /// <returns>The word picked in a random way</returns>
         public static string PickAWord()
         {
-            string dictionnaire = "../../Resources/dictionnaire.txt";
+			// Get the file path of the dictionary through the embedded resource.
+			Stream dictionnaire = Assembly.GetExecutingAssembly().GetManifestResourceStream("HangmanGame.Resources.dictionary.txt");
             int nbOfLines = CountLinesInFile(dictionnaire);
-            Random r = new Random();
+			// Re set the Stream to reset the position, the readability and seekability in order to read it a 2nd time.
+			dictionnaire = Assembly.GetExecutingAssembly().GetManifestResourceStream("HangmanGame.Resources.dictionary.txt");
+			Random r = new Random();
+			// Pick a random number between 0 and the number of lines count.
             long randomLineNumber = r.Next(0, nbOfLines);
+			// Read the file while we haven't reach the random number
             StreamReader sr = new StreamReader(dictionnaire);
             string result = "";
             for (int i = 0; i != randomLineNumber; i++)
             {
+				// Get the random word
                 result = sr.ReadLine();
             }
             sr.Close();
             result = ReplaceAccent(result);
-            return result.ToUpper();
+			// Finally return the word without its accents and in upper case.
+			return result.ToUpper();
         }
 
+		// Replace all the accent character by its equivalent without it.
         private static string ReplaceAccent(string result)
         {
             if (result.Contains('é'))
@@ -213,16 +227,19 @@ namespace HangmanGame
             return result;
         }
 
-        private static int CountLinesInFile(string f)
+		// Return the number of lines in the dictionary which represents the number of words there are.
+        private static int CountLinesInFile(Stream dictionary)
         {
             int count = 0;
             string line;
-            StreamReader r = new StreamReader(f);
-            while ((line = r.ReadLine()) != null)
+			// Read the file to its end
+            StreamReader sr = new StreamReader(dictionary);
+            while ((line = sr.ReadLine()) != null)
             {
+				// Each line : +1 to line count.
                 count++;
             }
-            r.Close();
+            sr.Close();
             return count;
         }
 
@@ -376,6 +393,10 @@ namespace HangmanGame
 			return s;
 		}
 
+		/// <summary>
+		/// Set the two fields nbVowels and nbConsonants with the number of each which are present.
+		/// </summary>
+		/// <param name="word"></param>
 		public static void CountNbVowelsConsonants(string word)
 		{
 			foreach (char c in word)

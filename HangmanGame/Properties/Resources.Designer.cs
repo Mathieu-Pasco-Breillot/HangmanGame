@@ -61,6 +61,63 @@ namespace HangmanGame.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ena
+        ///à
+        ///abaissa
+        ///abaissable
+        ///abaissables
+        ///abaissai
+        ///abaissaient
+        ///abaissais
+        ///abaissait
+        ///abaissâmes
+        ///abaissant
+        ///abaissante
+        ///abaissantes
+        ///abaissants
+        ///abaissas
+        ///abaissasse
+        ///abaissassent
+        ///abaissasses
+        ///abaissassiez
+        ///abaissassions
+        ///abaissât
+        ///abaissâtes
+        ///abaisse
+        ///abaissé
+        ///abaissée
+        ///abaissées
+        ///abaisse-langue
+        ///abaissement
+        ///abaissements
+        ///abaissent
+        ///abaisser
+        ///abaissera
+        ///abaisserai
+        ///abaisseraient
+        ///abaisserais
+        ///abaisserait
+        ///abaisseras
+        ///abaissèrent
+        ///abaisserez
+        ///abaisseriez
+        ///abaisserions
+        ///abaisserons
+        ///abaisseront
+        ///abaisses
+        ///abaissés
+        ///abaisseur
+        ///abaisseurs
+        ///abaissez
+        ///aba [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string dictionary {
+            get {
+                return ResourceManager.GetString("dictionary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Hangman0 {
