@@ -104,12 +104,7 @@ namespace HangmanGame.Properties {
         ///abaisserions
         ///abaisserons
         ///abaisseront
-        ///abaisses
-        ///abaissés
-        ///abaisseur
-        ///abaisseurs
-        ///abaissez
-        ///aba [rest of string was truncated]&quot;;.
+        ///abaisses [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string dictionary {
             get {
