@@ -26,12 +26,11 @@ namespace HangmanGame
 			formCGM = cgm;
 			wordToFind = Word.PickAWord();
 			labelWordToFindLength.Text += wordToFind.Length.ToString();
-			//nbOfTries = (short)wordToFind.Length;
 			dataGridViewWrongLetters.Rows.Clear();
 			labelRemainsTries2.Text = nbOfTries.ToString();
 			for (int i = 0; i < wordToFind.Length; i++)
 			{
-				richTextBoxWordToFind.Text += "?";
+				labelWordToFind.Text += "?";
 			}
 			timerRefreshElapsedTime.Start();
 			timer.Start();
@@ -52,7 +51,7 @@ namespace HangmanGame
 			labelRemainsTries2.Text = nbOfTries.ToString();
 			for (int i = 0; i < wordToFind.Length; i++)
 			{
-				richTextBoxWordToFind.Text += "?";
+				labelWordToFind.Text += "?";
 			}
 		}
 
@@ -70,7 +69,7 @@ namespace HangmanGame
 					labelRemainsTries2.Text = nbOfTries.ToString();
 				}
 				List<int> foundIndexes = Word.FoundIndexes(characterToVerify, wordToFind);
-				Word.InsertTheLetterInsteadOfInterrogation(characterToVerify, foundIndexes, richTextBoxWordToFind);
+				Word.InsertTheLetterInsteadOfInterrogation(characterToVerify, foundIndexes, labelWordToFind);
 
 				// Insert the character inside the datagridview
 				addCharacterToDataGrid(characterToVerify);
@@ -78,7 +77,7 @@ namespace HangmanGame
 				// Reset the textbox
 				textBoxCharacterToVerify.Clear();
 
-				if (richTextBoxWordToFind.Text == wordToFind && nbOfTries > 0)
+				if (labelWordToFind.Text == wordToFind && nbOfTries > 0)
 				{
 					timer.Stop();
 					timerRefreshElapsedTime.Stop();
@@ -90,23 +89,26 @@ namespace HangmanGame
 						MessageBoxButtons.OK,
 						MessageBoxIcon.Exclamation,
 						MessageBoxDefaultButton.Button1);
-					Dispose();
+                    restart();
 				}
 				else
 				{
 					if (nbOfTries == 0)
 					{
-						MessageBox.Show(
+                        timer.Stop();
+                        timerRefreshElapsedTime.Stop();
+                        MessageBox.Show(
 									"Vous n'avez pas trouvé le mot... \nLe mot à trouver était : " + wordToFind,
 									"C'est dommage",
 									MessageBoxButtons.OK,
 									MessageBoxIcon.Error,
 									MessageBoxDefaultButton.Button1);
-						Dispose();
+                        restart();
 					}
 				}
 			}
-		}
+            textBoxCharacterToVerify.Clear();
+        }
 
 		// Check on each changement on the textBox if the character enter is valid.
 		private void textBoxWordToFind_TextChanged(object sender, EventArgs e)
@@ -268,5 +270,23 @@ namespace HangmanGame
 			float finalScore = difficultyLevel * nbOfTries * (1 / (T/10));
             return finalScore;
 		}
-	}
+
+        private void restart()
+        {
+            nbOfTries = 8;
+            changeHangmanPicture(nbOfTries);
+            labelWordToFind.Text = "";
+            labelRemainsTries2.Text = "";
+            wordToFind = Word.PickAWord();
+            labelWordToFindLength.Text =  " Longueur du mot à trouver : " + wordToFind.Length.ToString();
+            dataGridViewWrongLetters.Rows.Clear();
+            labelRemainsTries2.Text = nbOfTries.ToString();
+            for (int i = 0; i < wordToFind.Length; i++)
+            {
+                labelWordToFind.Text += "?";
+            }
+            timerRefreshElapsedTime.Start();
+            timer.Restart();
+        }
+    }
 }

@@ -266,13 +266,13 @@ namespace HangmanGame
         /// </summary>
         /// <param name="characterToInsert">The character to be inserted instead of the existing "?".</param>
         /// <param name="foundIndexes">The indexes where to do the replacements.</param>
-        /// <param name="richTextBoxWordToFind">The container where to do the modifications.</param>
-        public static void InsertTheLetterInsteadOfInterrogation(string characterToInsert, List<int> foundIndexes, RichTextBox richTextBoxWordToFind)
+        /// <param name="labelWordToFind">The container where to do the modifications.</param>
+        public static void InsertTheLetterInsteadOfInterrogation(string characterToInsert, List<int> foundIndexes, Label labelWordToFind)
         {
             foreach (int i in foundIndexes)
             {
-                richTextBoxWordToFind.Text = richTextBoxWordToFind.Text.Insert(i, characterToInsert);
-                richTextBoxWordToFind.Text = richTextBoxWordToFind.Text.Remove(i + 1, 1);
+                labelWordToFind.Text = labelWordToFind.Text.Insert(i, characterToInsert);
+                labelWordToFind.Text = labelWordToFind.Text.Remove(i + 1, 1);
             }
         }
 
