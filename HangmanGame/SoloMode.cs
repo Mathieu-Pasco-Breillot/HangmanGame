@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.CData.MySQL;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -14,8 +15,10 @@ namespace HangmanGame
 		ChooseGameMode formCGM;
 		VersusMode formVM;
 		string wordToFind;
+        int idWord, idDate;
 		short nbOfTries = 8;
 		Stopwatch timer = new Stopwatch();
+        MySQLConnection conn = new MySQLConnection("Database=hangmangameDatabase;Offline=False;Password=vs2015;Server=localhost;User=vs2015");
 		/// <summary>
 		/// The form constructor which take the previous ChooseGameMode form in parameter.
 		/// </summary>
@@ -24,7 +27,8 @@ namespace HangmanGame
 		{
 			InitializeComponent();
 			formCGM = cgm;
-			wordToFind = Word.PickAWord();
+            wordToFind = HangmanDBConnection.HangmanDB.GetWordById(0, conn);
+			//wordToFind = Word.PickAWord();
 			labelWordToFindLength.Text += wordToFind.Length.ToString();
 			dataGridViewWrongLetters.Rows.Clear();
 			labelRemainsTries2.Text = nbOfTries.ToString();
@@ -89,6 +93,8 @@ namespace HangmanGame
 						MessageBoxButtons.OK,
 						MessageBoxIcon.Exclamation,
 						MessageBoxDefaultButton.Button1);
+                    HangmanDBConnection.HangmanDB.InsertNewTodayDate(conn);
+                    HangmanDBConnection.HangmanDB.InsertScoreToLeaderBoard(finalScore, nbOfTries, pseudoTextBox.Text, idWord, HangmanDBConnection.HangmanDB.LastDateOnServer(conn).Item1, conn);
                     restart();
 				}
 				else

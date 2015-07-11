@@ -90,6 +90,9 @@
       <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="HangmanDBConnection">
+      <HintPath>..\HangmanDBConnection\bin\Debug\HangmanDBConnection.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.CData.MySQL, Version=15.0.0.40, Culture=neutral, PublicKeyToken=cdc168f89cffe9cf">

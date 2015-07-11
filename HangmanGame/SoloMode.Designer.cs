@@ -42,8 +42,8 @@
             this.Letter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelWordToFindLength = new System.Windows.Forms.Label();
             this.labelElapsedTime = new System.Windows.Forms.Label();
-            this.timerRefreshElapsedTime = new System.Windows.Forms.Timer(this.components);
             this.labelWordToFind = new System.Windows.Forms.Label();
+            this.timerRefreshElapsedTime = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanelGlobal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangman)).BeginInit();
             this.tableLayoutPanelInformations.SuspendLayout();
@@ -222,12 +222,6 @@
             this.labelElapsedTime.Text = "Temps écoulé : ";
             this.labelElapsedTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // timerRefreshElapsedTime
-            // 
-            this.timerRefreshElapsedTime.Enabled = true;
-            this.timerRefreshElapsedTime.Interval = 1000;
-            this.timerRefreshElapsedTime.Tick += new System.EventHandler(this.timerRefreshElapsedTime_Tick);
-            // 
             // labelWordToFind
             // 
             this.labelWordToFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -237,6 +231,12 @@
             this.labelWordToFind.Name = "labelWordToFind";
             this.labelWordToFind.Size = new System.Drawing.Size(274, 20);
             this.labelWordToFind.TabIndex = 6;
+            // 
+            // timerRefreshElapsedTime
+            // 
+            this.timerRefreshElapsedTime.Enabled = true;
+            this.timerRefreshElapsedTime.Interval = 1000;
+            this.timerRefreshElapsedTime.Tick += new System.EventHandler(this.timerRefreshElapsedTime_Tick);
             // 
             // SoloMode
             // 
