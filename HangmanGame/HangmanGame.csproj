@@ -143,6 +143,9 @@
     <EmbeddedResource Include="ChooseGameMode.resx">
       <DependentUpon>ChooseGameMode.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Score.fr-FR.resx">
+      <DependentUpon>Score.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Score.resx">
       <DependentUpon>Score.cs</DependentUpon>
     </EmbeddedResource>

@@ -115,20 +115,6 @@ namespace HangmanGame
 			Word.HasValidCharacter(textBoxCharacterToVerify);
 		}
 
-		// Do stuff  to correctly shut down the application
-		private void SoloMode_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			if (formCGM != null)
-			{
-				formCGM.Close();
-			}
-			if (formVM != null)
-			{
-				formVM.Close();
-			}
-			Dispose();
-		}
-
 		// Perform a click when button Enter is press on the keyboard
 		private void textBoxWordToFind_KeyPress(object sender, KeyPressEventArgs e)
 		{
