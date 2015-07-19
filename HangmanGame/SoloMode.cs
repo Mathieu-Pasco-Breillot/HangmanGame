@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.CData.MySQL;
+using MySql.Data.MySqlClient;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Net;
+using System.Security.Permissions;
 
 namespace HangmanGame
 {
@@ -15,19 +17,21 @@ namespace HangmanGame
 		ChooseGameMode formCGM;
 		VersusMode formVM;
 		string wordToFind;
-        int idWord, idDate;
+		int idWord, idDate;
 		short nbOfTries = 8;
 		Stopwatch timer = new Stopwatch();
-        MySQLConnection conn = new MySQLConnection("Database=hangmangameDatabase;Offline=False;Password=vs2015;Server=localhost;User=vs2015");
+		SocketPermission permissions = new SocketPermission(NetworkAccess.Connect, TransportType.Tcp, "127.0.0.1", 3306);
 		/// <summary>
 		/// The form constructor which take the previous ChooseGameMode form in parameter.
 		/// </summary>
 		/// <param name="cgm">The ChooseGameMode form to be close properly.</param>
 		public SoloMode(ChooseGameMode cgm)
 		{
+			Random r = new Random();
+			idWord = r.Next(1, HangmanGame.DBRequests.GetWordsCount() + 1);
 			InitializeComponent();
 			formCGM = cgm;
-            wordToFind = HangmanDBConnection.HangmanDB.GetWordById(0, conn);
+			wordToFind = HangmanGame.DBRequests.GetWordById(idWord);
 			//wordToFind = Word.PickAWord();
 			labelWordToFindLength.Text += wordToFind.Length.ToString();
 			dataGridViewWrongLetters.Rows.Clear();
@@ -86,35 +90,24 @@ namespace HangmanGame
 					timer.Stop();
 					timerRefreshElapsedTime.Stop();
 					float finalScore = scoreComputation(wordToFind);
-					MessageBox.Show(
-						"! ! ! Vous avez trouvé le mot ! ! !" + "\nVotre score : " + finalScore + " points !" +
-						"\nVotre temps : " + displayElapsedTime(timer.Elapsed),
-						"Félicitations",
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Exclamation,
-						MessageBoxDefaultButton.Button1);
-                    HangmanDBConnection.HangmanDB.InsertNewTodayDate(conn);
-                    HangmanDBConnection.HangmanDB.InsertScoreToLeaderBoard(finalScore, nbOfTries, pseudoTextBox.Text, idWord, HangmanDBConnection.HangmanDB.LastDateOnServer(conn).Item1, conn);
-                    restart();
+					Score score = new Score(finalScore, nbOfTries, idWord, ref timer);
+					score.ShowDialog();
+					restart();
 				}
 				else
 				{
 					if (nbOfTries == 0)
 					{
-                        timer.Stop();
-                        timerRefreshElapsedTime.Stop();
-                        MessageBox.Show(
-									"Vous n'avez pas trouvé le mot... \nLe mot à trouver était : " + wordToFind,
-									"C'est dommage",
-									MessageBoxButtons.OK,
-									MessageBoxIcon.Error,
-									MessageBoxDefaultButton.Button1);
-                        restart();
+						timer.Stop();
+						timerRefreshElapsedTime.Stop();
+						Score score = new Score(wordToFind);
+						score.ShowDialog();
+						restart();
 					}
 				}
 			}
-            textBoxCharacterToVerify.Clear();
-        }
+			textBoxCharacterToVerify.Clear();
+		}
 
 		// Check on each changement on the textBox if the character enter is valid.
 		private void textBoxWordToFind_TextChanged(object sender, EventArgs e)
@@ -146,12 +139,6 @@ namespace HangmanGame
 			}
 		}
 
-		// Check on each changement on the pesudoTextBox if the character enter is valid.
-		private void pseudoTextBox_TextChanged(object sender, EventArgs e)
-		{
-			Word.HasValidCharacter(pseudoTextBox);
-		}
-
 		private void addCharacterToDataGrid(string c)
 		{
 			dataGridViewWrongLetters.Rows.Add(c);
@@ -160,7 +147,7 @@ namespace HangmanGame
 
 		private void timerRefreshElapsedTime_Tick(object sender, EventArgs e)
 		{
-			displayElapsedTime(timer.Elapsed, labelElapsedTime);
+			DisplayTime.displayElapsedTime(timer.Elapsed, labelElapsedTime);
 		}
 
 		private void changeHangmanPicture(int tries)
@@ -195,45 +182,6 @@ namespace HangmanGame
 					pictureBoxHangman.Image = Properties.Resources.Hangman0;
 					break;
 			}
-		}
-
-		/// <summary>
-		/// Displays the elapsed time in the GUI
-		/// Starts when the action on the start button has been triggered
-		/// </summary>
-		private void displayElapsedTime(TimeSpan ts, Label label)
-		{
-			string elapsedTime = "";
-			if (ts.Hours >= 1)
-			{
-				elapsedTime = string.Format("{0:00} h {1:00} min {2:00} s", ts.Hours, ts.Minutes, ts.Seconds);
-			}
-			else if (ts.Minutes >= 1)
-			{
-				elapsedTime = string.Format("{0:00} min {1:00} s", ts.Minutes, ts.Seconds);
-			}
-			else
-			{
-				elapsedTime = string.Format("{0:00} s", ts.Seconds);
-			}
-			label.Text = "Temps écoulé : " + elapsedTime;
-		}
-		private string displayElapsedTime(TimeSpan ts)
-		{
-			string elapsedTime = "";
-			if (ts.Hours >= 1)
-			{
-				elapsedTime = string.Format("{0:00} h {1:00} min {2:00} s", ts.Hours, ts.Minutes, ts.Seconds);
-			}
-			else if (ts.Minutes >= 1)
-			{
-				elapsedTime = string.Format("{0:00} min {1:00} s", ts.Minutes, ts.Seconds);
-			}
-			else
-			{
-				elapsedTime = string.Format("{0:00} s", ts.Seconds);
-			}
-			return elapsedTime;
 		}
 
 		/// <summary>
@@ -273,26 +221,28 @@ namespace HangmanGame
 				coef = 0.75F;
 			}
 			float difficultyLevel = S * coef;
-			float finalScore = difficultyLevel * nbOfTries * (1 / (T/10));
-            return finalScore;
+			float finalScore = difficultyLevel * nbOfTries * (1 / (T / 10));
+			return finalScore;
 		}
 
-        private void restart()
-        {
-            nbOfTries = 8;
-            changeHangmanPicture(nbOfTries);
-            labelWordToFind.Text = "";
-            labelRemainsTries2.Text = "";
-            wordToFind = Word.PickAWord();
-            labelWordToFindLength.Text =  " Longueur du mot à trouver : " + wordToFind.Length.ToString();
-            dataGridViewWrongLetters.Rows.Clear();
-            labelRemainsTries2.Text = nbOfTries.ToString();
-            for (int i = 0; i < wordToFind.Length; i++)
-            {
-                labelWordToFind.Text += "?";
-            }
-            timerRefreshElapsedTime.Start();
-            timer.Restart();
-        }
-    }
+		private void restart()
+		{
+			nbOfTries = 8;
+			changeHangmanPicture(nbOfTries);
+			labelWordToFind.Text = "";
+			labelRemainsTries2.Text = "";
+			Random r = new Random();
+			idWord = r.Next(1, HangmanGame.DBRequests.GetWordsCount() + 1);
+			wordToFind = HangmanGame.DBRequests.GetWordById(idWord);
+			labelWordToFindLength.Text = " Longueur du mot à trouver : " + wordToFind.Length.ToString();
+			dataGridViewWrongLetters.Rows.Clear();
+			labelRemainsTries2.Text = nbOfTries.ToString();
+			for (int i = 0; i < wordToFind.Length; i++)
+			{
+				labelWordToFind.Text += "?";
+			}
+			timerRefreshElapsedTime.Start();
+			timer.Restart();
+		}
+	}
 }
