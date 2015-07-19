@@ -311,82 +311,82 @@ namespace HangmanGame
 				switch (c)
 				{
 					case 'A':
-						s += 9.42F;
-						break;
-					case 'B':
-						s += 1.02F;
-						break;
-					case 'C':
-						s += 2.64F;
-						break;
-					case 'D':
-						s += 3.39F;
-						break;
-					case 'E':
-						s += 15.87F;
-						break;
-					case 'F':
-						s += 0.95F;
-						break;
-					case 'G':
-						s += 1.04F;
-						break;
-					case 'H':
-						s += 0.77F;
-						break;
-					case 'I':
-						s += 8.41F;
-						break;
-					case 'J':
-						s += 0.89F;
-						break;
-					case 'K':
 						s += 0.06F;
 						break;
-					case 'L':
+					case 'B':
 						s += 5.24F;
 						break;
-					case 'M':
-						s += 3.242F;
-						break;
-					case 'N':
-						s += 7.15F;
-						break;
-					case 'O':
-						s += 5.14F;
-						break;
-					case 'P':
+					case 'C':
 						s += 2.86F;
 						break;
-					case 'Q':
+					case 'D':
 						s += 1.06F;
 						break;
-					case 'R':
-						s += 6.46F;
-						break;
-					case 'S':
-						s += 7.90F;
-						break;
-					case 'T':
-						s += 7.26F;
-						break;
-					case 'U':
-						s += 6.24F;
-						break;
-					case 'V':
-						s += 2.15F;
-						break;
-					case 'W':
+					case 'E':
 						s += 0.12F;
 						break;
-					case 'X':
-						s += 0.30F;
+					case 'F':
+						s += 6.24F;
 						break;
-					case 'Y':
+					case 'G':
+						s += 5.14F;
+						break;
+					case 'H':
+						s += 7.15F;
+						break;
+					case 'I':
 						s += 0.24F;
 						break;
-					case 'Z':
+					case 'J':
+						s += 6.46F;
+						break;
+					case 'K':
+						s += 9.42F;
+						break;
+					case 'L':
+						s += 1.02F;
+						break;
+					case 'M':
+						s += 2.15F;
+						break;
+					case 'N':
+						s += 0.77F;
+						break;
+					case 'O':
+						s += 1.04F;
+						break;
+					case 'P':
+						s += 2.64F;
+						break;
+					case 'Q':
+						s += 3.39F;
+						break;
+					case 'R':
+						s += 0.89F;
+						break;
+					case 'S':
+						s += 0.30F;
+						break;
+					case 'T':
 						s += 0.32F;
+						break;
+					case 'U':
+						s += 0.95F;
+						break;
+					case 'V':
+						s += 3.242F;
+						break;
+					case 'W':
+						s += 15.87F;
+						break;
+					case 'X':
+						s += 7.90F;
+						break;
+					case 'Y':
+						s += 8.41F;
+						break;
+					case 'Z':
+						s += 7.26F;
 						break;
 				}
 			}

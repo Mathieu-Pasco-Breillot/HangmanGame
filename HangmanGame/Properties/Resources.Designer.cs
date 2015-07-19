@@ -61,8 +61,7 @@ namespace HangmanGame.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à ena
-        ///à
+        ///   Recherche une chaîne localisée semblable à à
         ///abaissa
         ///abaissable
         ///abaissables
@@ -105,10 +104,6 @@ namespace HangmanGame.Properties {
         ///abaisserons
         ///abaisseront
         ///abaisses
-        ///abaissés
-        ///abaisseur
-        ///abaisseurs
-        ///abaissez
         ///aba [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>
         internal static string dictionary {

@@ -117,7 +117,430 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelRemainsTries2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanelInformations.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxHangman.Parent" xml:space="preserve">
+    <value>tableLayoutPanelGlobal</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelRemainsTries2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="&gt;&gt;labelWordToFindLength.Name" xml:space="preserve">
+    <value>labelWordToFindLength</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxHangman.Name" xml:space="preserve">
+    <value>pictureBoxHangman</value>
+  </data>
+  <data name="dataGridViewWrongLetters.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;buttonValidationWord.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewWrongLetters.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="labelRemainsTries1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;labelRemainsTries2.Name" xml:space="preserve">
+    <value>labelRemainsTries2</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelInformations.Parent" xml:space="preserve">
+    <value>tableLayoutPanelGlobal</value>
+  </data>
+  <data name="labelWordToFindLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 15</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewWrongLetters.Name" xml:space="preserve">
+    <value>dataGridViewWrongLetters</value>
+  </data>
+  <data name="&gt;&gt;pseudoLabel.Name" xml:space="preserve">
+    <value>pseudoLabel</value>
+  </data>
+  <data name="labelWordToFind.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="pseudoTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tableLayoutPanelInformations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>563, 3</value>
+  </data>
+  <data name="labelWordToFind.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonValidationWord.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelRemainsTries2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 29</value>
+  </data>
+  <data name="tableLayoutPanelGlobal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>812, 523</value>
+  </data>
+  <data name="tableLayoutPanelGlobal.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;labelWordToFind.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="dataGridViewWrongLetters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelElapsedTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>554, 15</value>
+  </data>
+  <data name="&gt;&gt;labelWordToFindLength.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonValidationWord.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="buttonValidationWord.Text" xml:space="preserve">
+    <value>Valider</value>
+  </data>
+  <data name="labelWordToFindLength.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="dataGridViewWrongLetters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 63</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="labelElapsedTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 499</value>
+  </data>
+  <data name="&gt;&gt;textBoxCharacterToVerify.Parent" xml:space="preserve">
+    <value>tableLayoutPanelGlobal</value>
+  </data>
+  <data name="tableLayoutPanelGlobal.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelWordToFind.Location" type="System.Drawing.Point, System.Drawing">
+    <value>283, 460</value>
+  </data>
+  <data name="textBoxCharacterToVerify.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 23</value>
+  </data>
+  <data name="textBoxCharacterToVerify.MaxLength" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;labelElapsedTime.Name" xml:space="preserve">
+    <value>labelElapsedTime</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="&gt;&gt;labelElapsedTime.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;labelWordToFind.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxCharacterToVerify.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="&gt;&gt;labelRemainsTries1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanelInformations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 444</value>
+  </data>
+  <data name="labelWordToFindLength.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;labelElapsedTime.Parent" xml:space="preserve">
+    <value>tableLayoutPanelGlobal</value>
+  </data>
+  <data name="&gt;&gt;labelRemainsTries1.Name" xml:space="preserve">
+    <value>labelRemainsTries1</value>
+  </data>
+  <data name="&gt;&gt;labelWordToFind.Name" xml:space="preserve">
+    <value>labelWordToFind</value>
+  </data>
+  <data name="&gt;&gt;timerRefreshElapsedTime.Name" xml:space="preserve">
+    <value>timerRefreshElapsedTime</value>
+  </data>
+  <data name="&gt;&gt;buttonValidationWord.Name" xml:space="preserve">
+    <value>buttonValidationWord</value>
+  </data>
+  <data name="labelRemainsTries1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="&gt;&gt;pseudoTextBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;labelRemainsTries1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWordToFind.Parent" xml:space="preserve">
+    <value>tableLayoutPanelGlobal</value>
+  </data>
+  <data name="labelWordToFind.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="&gt;&gt;pseudoTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelRemainsTries2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 18pt</value>
+  </data>
+  <data name="labelRemainsTries2.Text" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="labelRemainsTries1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelElapsedTime.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="textBoxCharacterToVerify.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 458</value>
+  </data>
+  <data name="labelRemainsTries1.Text" xml:space="preserve">
+    <value>Nombre d'essais restant : </value>
+  </data>
+  <data name="labelElapsedTime.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonValidationWord.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 67</value>
+  </data>
+  <data name="labelRemainsTries1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 7</value>
+  </data>
+  <data name="labelWordToFindLength.Text" xml:space="preserve">
+    <value>Longueur du mot : </value>
+  </data>
+  <data name="dataGridViewWrongLetters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 348</value>
+  </data>
+  <data name="tableLayoutPanelInformations.RowCount" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="labelRemainsTries2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="labelElapsedTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelInformations.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;pseudoTextBox.Name" xml:space="preserve">
+    <value>pseudoTextBox</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxHangman.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelWordToFind.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelGlobal.Name" xml:space="preserve">
+    <value>tableLayoutPanelGlobal</value>
+  </data>
+  <data name="textBoxCharacterToVerify.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="labelWordToFindLength.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelRemainsTries1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="pictureBoxHangman.Size" type="System.Drawing.Size, System.Drawing">
+    <value>554, 444</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewWrongLetters.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxHangman.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Letter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxCharacterToVerify.Name" xml:space="preserve">
+    <value>textBoxCharacterToVerify</value>
+  </data>
+  <data name="pictureBoxHangman.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanelGlobal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;pseudoLabel.Parent" xml:space="preserve">
+    <value>tableLayoutPanelInformations</value>
+  </data>
+  <data name="buttonValidationWord.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;labelWordToFindLength.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Letter.Name" xml:space="preserve">
+    <value>Letter</value>
+  </data>
+  <data name="&gt;&gt;buttonValidationWord.Parent" xml:space="preserve">
+    <value>tableLayoutPanelGlobal</value>
+  </data>
+  <data name="labelRemainsTries2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;labelRemainsTries2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pictureBoxHangman.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="pseudoLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;pseudoLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelElapsedTime.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;labelWordToFindLength.Parent" xml:space="preserve">
+    <value>tableLayoutPanelInformations</value>
+  </data>
+  <data name="&gt;&gt;pseudoTextBox.Parent" xml:space="preserve">
+    <value>tableLayoutPanelInformations</value>
+  </data>
+  <data name="Letter.ToolTipText" xml:space="preserve">
+    <value>Chaque caractères déjà essayé est affiché ici.</value>
+  </data>
+  <data name="tableLayoutPanelInformations.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pictureBoxHangman.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="labelElapsedTime.Text" xml:space="preserve">
+    <value>Temps écoulé : </value>
+  </data>
+  <data name="buttonValidationWord.Location" type="System.Drawing.Point, System.Drawing">
+    <value>563, 453</value>
+  </data>
+  <data name="labelWordToFind.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 20</value>
+  </data>
+  <data name="tableLayoutPanelInformations.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;textBoxCharacterToVerify.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelRemainsTries2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;labelRemainsTries2.Parent" xml:space="preserve">
+    <value>tableLayoutPanelInformations</value>
+  </data>
+  <data name="&gt;&gt;timerRefreshElapsedTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tableLayoutPanelInformations.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="dataGridViewWrongLetters" Row="2" RowSpan="3" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelWordToFindLength" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelRemainsTries1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelRemainsTries2" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,30,Absolute,30,Absolute,30,Absolute,50,Percent,100,Absolute,30" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="labelRemainsTries1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 15</value>
+  </data>
+  <data name="&gt;&gt;buttonValidationWord.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tableLayoutPanelGlobal.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;textBoxCharacterToVerify.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanelGlobal.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="pictureBoxHangman" Row="0" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="textBoxCharacterToVerify" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonValidationWord" Row="1" RowSpan="2" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanelInformations" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="labelElapsedTime" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="labelWordToFind" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,280,Absolute,280,AutoSize,0" /&gt;&lt;Rows Styles="Absolute,450,Absolute,40,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="textBoxCharacterToVerify.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;pseudoLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;labelElapsedTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Letter.HeaderText" xml:space="preserve">
+    <value>Lettres</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Le Pendu</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelGlobal.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelInformations.Name" xml:space="preserve">
+    <value>tableLayoutPanelInformations</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelGlobal.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>812, 523</value>
+  </data>
+  <data name="labelRemainsTries2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 30</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>SoloMode</value>
+  </data>
+  <data name="pseudoTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 33</value>
+  </data>
+  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>830, 570</value>
+  </data>
+  <data name="tableLayoutPanelGlobal.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;labelRemainsTries1.Parent" xml:space="preserve">
+    <value>tableLayoutPanelInformations</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewWrongLetters.Parent" xml:space="preserve">
+    <value>tableLayoutPanelInformations</value>
+  </data>
+  <data name="labelWordToFindLength.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 421</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelGlobal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelInformations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pseudoLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 7</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>fr-FR</value>
+  </metadata>
   <metadata name="timerRefreshElapsedTime.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>743, 17</value>
   </metadata>
 </root>
