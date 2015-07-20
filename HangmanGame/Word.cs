@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
 
 namespace HangmanGame
@@ -13,7 +12,19 @@ namespace HangmanGame
 	/// </summary>
 	public static class Word
     {
-		private static ushort nbVowels = 0, nbConsonants = 0;
+		/// <summary>
+		/// The number of vowels contains in the word.
+		/// </summary>
+		private static ushort nbVowels = 0;
+		
+		/// <summary>
+		/// The number of consonants contains in the word.
+		/// </summary>
+		private static ushort nbConsonants = 0;
+		
+		/// <summary>
+		/// The list of letters which are authorized for the player to try.
+		/// </summary>
 		private static List<char> Letters = new List<char>
         { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '-'};
 
@@ -157,7 +168,11 @@ namespace HangmanGame
 			return result.ToUpper();
         }
 
-		// Replace all the accent character by its equivalent without it.
+		/// <summary>
+		/// Replace all the accent character by its equivalent without it.
+		/// </summary>
+		/// <param name="result">The string to re-format</param>
+		/// <returns></returns>
         private static string ReplaceAccent(string result)
         {
             if (result.Contains('é'))
@@ -227,7 +242,11 @@ namespace HangmanGame
             return result;
         }
 
-		// Return the number of lines in the dictionary which represents the number of words there are.
+		/// <summary>
+		/// Return the number of lines in the dictionary which represents the number of words there are. 
+		/// </summary>
+		/// <param name="dictionary">The dictionary to count</param>
+		/// <returns></returns>
         private static int CountLinesInFile(Stream dictionary)
         {
             int count = 0;

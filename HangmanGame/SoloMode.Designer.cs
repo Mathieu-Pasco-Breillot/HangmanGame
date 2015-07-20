@@ -35,11 +35,11 @@
 			this.textBoxCharacterToVerify = new System.Windows.Forms.TextBox();
 			this.buttonValidationWord = new System.Windows.Forms.Button();
 			this.tableLayoutPanelInformations = new System.Windows.Forms.TableLayoutPanel();
-			this.labelRemainsTries1 = new System.Windows.Forms.Label();
-			this.labelRemainsTries2 = new System.Windows.Forms.Label();
 			this.dataGridViewWrongLetters = new System.Windows.Forms.DataGridView();
 			this.Letter = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.labelWordToFindLength = new System.Windows.Forms.Label();
+			this.labelRemainsTries1 = new System.Windows.Forms.Label();
+			this.labelRemainsTries2 = new System.Windows.Forms.Label();
 			this.labelElapsedTime = new System.Windows.Forms.Label();
 			this.labelWordToFind = new System.Windows.Forms.Label();
 			this.timerRefreshElapsedTime = new System.Windows.Forms.Timer(this.components);
@@ -94,22 +94,12 @@
 			this.tableLayoutPanelInformations.Controls.Add(this.labelRemainsTries2, 0, 1);
 			this.tableLayoutPanelInformations.Name = "tableLayoutPanelInformations";
 			// 
-			// labelRemainsTries1
-			// 
-			resources.ApplyResources(this.labelRemainsTries1, "labelRemainsTries1");
-			this.labelRemainsTries1.Name = "labelRemainsTries1";
-			// 
-			// labelRemainsTries2
-			// 
-			resources.ApplyResources(this.labelRemainsTries2, "labelRemainsTries2");
-			this.labelRemainsTries2.Name = "labelRemainsTries2";
-			// 
 			// dataGridViewWrongLetters
 			// 
 			resources.ApplyResources(this.dataGridViewWrongLetters, "dataGridViewWrongLetters");
 			this.dataGridViewWrongLetters.AllowUserToDeleteRows = false;
 			this.dataGridViewWrongLetters.AllowUserToOrderColumns = true;
-			this.dataGridViewWrongLetters.BackgroundColor = System.Drawing.Color.Green;
+			this.dataGridViewWrongLetters.BackgroundColor = System.Drawing.SystemColors.Menu;
 			this.dataGridViewWrongLetters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridViewWrongLetters.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Letter});
@@ -129,6 +119,16 @@
 			// 
 			resources.ApplyResources(this.labelWordToFindLength, "labelWordToFindLength");
 			this.labelWordToFindLength.Name = "labelWordToFindLength";
+			// 
+			// labelRemainsTries1
+			// 
+			resources.ApplyResources(this.labelRemainsTries1, "labelRemainsTries1");
+			this.labelRemainsTries1.Name = "labelRemainsTries1";
+			// 
+			// labelRemainsTries2
+			// 
+			resources.ApplyResources(this.labelRemainsTries2, "labelRemainsTries2");
+			this.labelRemainsTries2.Name = "labelRemainsTries2";
 			// 
 			// labelElapsedTime
 			// 

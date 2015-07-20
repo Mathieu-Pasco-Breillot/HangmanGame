@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using MySql.Data.MySqlClient;
 using System.Diagnostics;
 using System.Windows.Forms;
-using System.Net;
-using System.Security.Permissions;
 
 namespace HangmanGame
 {
@@ -13,56 +10,72 @@ namespace HangmanGame
 	/// </summary>
 	public partial class SoloMode : Form
 	{
-		// Global Variables
-		ChooseGameMode formCGM;
-		VersusMode formVM;
-		string wordToFind;
-		int idWord;
-		short nbOfTries = 8;
-		Stopwatch timer = new Stopwatch();
 		/// <summary>
-		/// The form constructor which take the previous ChooseGameMode form in parameter.
+		/// The word to find
 		/// </summary>
-		/// <param name="cgm">The ChooseGameMode form to be close properly.</param>
-		public SoloMode(ChooseGameMode cgm)
+		private string wordToFind;
+
+		/// <summary>
+		/// The id of the word to find
+		/// </summary>
+		private int idWord;
+
+		/// <summary>
+		/// The number of allowed tries to find the word, 8 by default.
+		/// </summary>
+		private short nbOfTries = 8;
+
+		/// <summary>
+		/// The stopwatch to measure the elapsed time as long as the player hasn't win or lose
+		/// </summary>
+		private Stopwatch timer = new Stopwatch();
+		
+		/// <summary>
+		/// Constructor which take a random word in the database.
+		/// </summary>
+		public SoloMode()
 		{
-			Random r = new Random();
-			idWord = r.Next(1, HangmanGame.DBRequests.GetWordsCount() + 1);
 			InitializeComponent();
-			formCGM = cgm;
-			wordToFind = HangmanGame.DBRequests.GetWordById(idWord);
-			//wordToFind = Word.PickAWord();
+			wordToFind = HangmanGame.DBRequests.GetARandomWord(out idWord);
 			labelWordToFindLength.Text += wordToFind.Length.ToString();
 			dataGridViewWrongLetters.Rows.Clear();
 			labelRemainsTries2.Text = nbOfTries.ToString();
-			for (int i = 0; i < wordToFind.Length; i++)
-			{
-				labelWordToFind.Text += "?";
-			}
+			ReplaceWordByInterrogation();
 			timerRefreshElapsedTime.Start();
 			timer.Start();
 		}
+		
 		/// <summary>
-		/// The form constructor which take the previous VersusMode form in parameter.
+		/// Constructor which take the word entered by the other player and the given number of tries.
 		/// </summary>
-		/// <param name="vm">The VersusMode form to be close properly.</param>
 		/// <param name="wordToFind">The word to find entered by the player</param>
 		/// <param name="nbOfTries">The number of tries entered by the player</param>
-		public SoloMode(VersusMode vm, string wordToFind, short nbOfTries)
+		public SoloMode(string wordToFind, short nbOfTries)
 		{
 			InitializeComponent();
-			formVM = vm;
 			this.wordToFind = wordToFind;
 			this.nbOfTries = nbOfTries;
 			labelWordToFindLength.Text += this.wordToFind.Length.ToString();
 			labelRemainsTries2.Text = nbOfTries.ToString();
+			ReplaceWordByInterrogation();
+		}
+
+		/// <summary>
+		/// Replace the word to find by interrogation word to masked it from the player.
+		/// </summary>
+		private void ReplaceWordByInterrogation()
+		{
 			for (int i = 0; i < wordToFind.Length; i++)
 			{
 				labelWordToFind.Text += "?";
 			}
 		}
 
-		// Do all the stuff when we try to verify 
+		/// <summary>
+		/// Do the procedure when it tries to verify.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void buttonValidationWord_Click(object sender, EventArgs e)
 		{
 			// Get the character entered
@@ -108,13 +121,21 @@ namespace HangmanGame
 			textBoxCharacterToVerify.Clear();
 		}
 
-		// Check on each changement on the textBox if the character enter is valid.
+		/// <summary>
+		/// Check on each modification on the textBox if the character entered is valid.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void textBoxWordToFind_TextChanged(object sender, EventArgs e)
 		{
 			Word.HasValidCharacter(textBoxCharacterToVerify);
 		}
 
-		// Perform a click when button Enter is press on the keyboard
+		/// <summary>
+		/// Perform a click when button Enter is press on the keyboard
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void textBoxWordToFind_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (e.KeyChar == (char)Keys.Enter)
@@ -124,17 +145,30 @@ namespace HangmanGame
 			}
 		}
 
+		/// <summary>
+		/// Add the given character to the array in order to display it to the player.
+		/// </summary>
+		/// <param name="c">the character to add to the array</param>
 		private void addCharacterToDataGrid(string c)
 		{
 			dataGridViewWrongLetters.Rows.Add(c);
 			dataGridViewWrongLetters.Sort(dataGridViewWrongLetters.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
 		}
 
+		/// <summary>
+		/// Refresh the label time every 1000 ms
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void timerRefreshElapsedTime_Tick(object sender, EventArgs e)
 		{
 			DisplayTime.displayElapsedTime(timer.Elapsed, labelElapsedTime);
 		}
 
+		/// <summary>
+		/// Change the hangman picture
+		/// </summary>
+		/// <param name="tries">Determine which picture must be displayed</param>
 		private void changeHangmanPicture(int tries)
 		{
 			switch (tries)
@@ -190,6 +224,11 @@ namespace HangmanGame
 			return false;
 		}
 
+		/// <summary>
+		/// The offline score computation
+		/// </summary>
+		/// <param name="word">The full word is required to compute the score</param>
+		/// <returns></returns>
 		private float scoreComputation(string word)
 		{
 			float S = 0, coef = 1, T = (timer.ElapsedMilliseconds / 1000);
@@ -209,32 +248,41 @@ namespace HangmanGame
 			float finalScore = difficultyLevel * nbOfTries * (1 / (T / 10));
 			return finalScore;
 		}
+		
+		/// <summary>
+		/// The online score computation
+		/// </summary>
+		/// <param name="wordValue">The value of the word</param>
+		/// <returns></returns>
 		private float scoreComputation(float wordValue)
 		{
 			float T = (timer.ElapsedMilliseconds / 1000);
 			return wordValue * nbOfTries * (1 / (T / 10));
 		}
 
+		/// <summary>
+		/// Reset every things which needs to.
+		/// </summary>
 		private void restart()
 		{
 			nbOfTries = 8;
 			changeHangmanPicture(nbOfTries);
 			labelWordToFind.Text = "";
 			labelRemainsTries2.Text = "";
-			Random r = new Random();
-			idWord = r.Next(1, HangmanGame.DBRequests.GetWordsCount() + 1);
-			wordToFind = HangmanGame.DBRequests.GetWordById(idWord);
+			wordToFind = HangmanGame.DBRequests.GetARandomWord(out idWord);
 			labelWordToFindLength.Text = " Longueur du mot à trouver : " + wordToFind.Length.ToString();
 			dataGridViewWrongLetters.Rows.Clear();
 			labelRemainsTries2.Text = nbOfTries.ToString();
-			for (int i = 0; i < wordToFind.Length; i++)
-			{
-				labelWordToFind.Text += "?";
-			}
+			ReplaceWordByInterrogation();
 			timerRefreshElapsedTime.Start();
 			timer.Restart();
 		}
 
+		/// <summary>
+		/// Close correctly the application.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void SoloMode_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			Application.Exit();

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="HangmanGame.Score">
+    <Position X="6.25" Y="0.5" Width="4.5" />
+    <Members>
+      <Field Name="buttonClose" Hidden="true" />
+      <Field Name="buttonRestart" Hidden="true" />
+      <Field Name="buttonSaveRestart" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="labelFinal" Hidden="true" />
+      <Field Name="pseudoLabel" Hidden="true" />
+      <Field Name="pseudoTextBox" Hidden="true" />
+      <Field Name="splitContainer1" Hidden="true" />
+      <Field Name="tableLayoutPanel1" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>gAAACAAAACEAAAAAAACCAgECAAAQgQAAAAQEQAABAKA=</HashCode>
+      <FileName>Score.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HangmanGame.Word">
+    <Position X="11.5" Y="0.5" Width="7.25" />
+    <TypeIdentifier>
+      <HashCode>IACA0AgAEBAAAAAAAAAAAYAAAAAAAAAAQAAJAAAAgIA=</HashCode>
+      <FileName>Word.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HangmanGame.ChooseGameMode">
+    <Position X="0.5" Y="0.5" Width="4" />
+    <Members>
+      <Field Name="buttonSoloMode" Hidden="true" />
+      <Field Name="buttonVersusMode" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="tableLayoutPanel1" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAACAAABAAgACAAAACAAAIAAAAAAAABAAAACA=</HashCode>
+      <FileName>ChooseGameMode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HangmanGame.DisplayTime">
+    <Position X="16.5" Y="5.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DisplayTime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HangmanGame.SoloMode">
+    <Position X="11.5" Y="5.25" Width="4.75" />
+    <Members>
+      <Field Name="buttonValidationWord" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="dataGridViewWrongLetters" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="labelElapsedTime" Hidden="true" />
+      <Field Name="labelRemainsTries1" Hidden="true" />
+      <Field Name="labelRemainsTries2" Hidden="true" />
+      <Field Name="labelWordToFind" Hidden="true" />
+      <Field Name="labelWordToFindLength" Hidden="true" />
+      <Field Name="Letter" Hidden="true" />
+      <Field Name="pictureBoxHangman" Hidden="true" />
+      <Field Name="tableLayoutPanelGlobal" Hidden="true" />
+      <Field Name="tableLayoutPanelInformations" Hidden="true" />
+      <Field Name="textBoxCharacterToVerify" Hidden="true" />
+      <Field Name="timerRefreshElapsedTime" Hidden="true" />
+    </Members>
+    <AssociationLine Name="formVM" Type="HangmanGame.VersusMode" FixedToPoint="true">
+      <Path>
+        <Point X="11.5" Y="5.75" />
+        <Point X="5.75" Y="5.75" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="formCGM" Type="HangmanGame.ChooseGameMode" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.5" Y="7.942" />
+        <Point X="0.322" Y="7.942" />
+        <Point X="0.322" Y="3.128" />
+        <Point X="1.125" Y="3.128" />
+        <Point X="1.125" Y="2.117" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>gAQAAJgAICggBAAQgACAgAACYISgAAAAAAAMSAQABSI=</HashCode>
+      <FileName>SoloMode.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="formVM" />
+      <Field Name="formCGM" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="HangmanGame.VersusMode">
+    <Position X="0.5" Y="4" Width="5.25" />
+    <Members>
+      <Field Name="buttonValidateWordToFind" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Field Name="maskedTextBox1" Hidden="true" />
+      <Field Name="maskedTextBoxWordToFind" Hidden="true" />
+      <Field Name="tableLayoutPanel1" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACQAABAAAAiAgCACBAAAAQAAAAAAAAAgQSA=</HashCode>
+      <FileName>VersusMode.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="formCGM" />
+      <Field Name="formSm" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

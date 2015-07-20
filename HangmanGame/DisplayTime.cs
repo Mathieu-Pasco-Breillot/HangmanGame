@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HangmanGame
 {
+	/// <summary>
+	/// A class to correctly display the elapsed in many ways
+	/// </summary>
 	public static class DisplayTime
 	{
 		/// <summary>
-		/// Displays the elapsed time in the GUI
-		/// Starts when the action on the start button has been triggered
+		/// Displays the elapsed time directly in the label
 		/// </summary>
 		public static void displayElapsedTime(TimeSpan ts, System.Windows.Forms.Label label)
 		{
@@ -29,6 +27,12 @@ namespace HangmanGame
 			}
 			label.Text = "Temps écoulé : " + elapsedTime;
 		}
+		
+		/// <summary>
+		/// Format the elapsed time.
+		/// </summary>
+		/// <param name="ts"></param>
+		/// <returns>The elapsed time correctly formated</returns>
 		public static string displayElapsedTime(TimeSpan ts)
 		{
 			string elapsedTime = "";

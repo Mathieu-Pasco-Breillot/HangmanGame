@@ -1,20 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Security.Permissions;
-using System.Text;
 using MySql.Data.MySqlClient;
 
 namespace HangmanGame
 {
 	public static class DBRequests
 	{
-		// Global variables
+		/// <summary>
+		/// The MyMySqlConnection object to connect the app with the database
+		/// </summary>
 		private static MySqlConnection conn;
+
+		/// <summary>
+		/// The MySqlDataReader object is used to read the data when a select command is executed
+		/// </summary>
 		private static MySqlDataReader rdr;
+
+		/// <summary>
+		/// The MySqlCommand object the execute many requests to the database.
+		/// </summary>
 		private static MySqlCommand cmd;
 
+		/// <summary>
+		/// Open a new connection between the application and the database
+		/// </summary>
 		private static void DBOpenConnection()
 		{
 			try
@@ -32,11 +40,21 @@ namespace HangmanGame
 				Console.WriteLine(ex.ToString());
 			}
 		}
+
+		/// <summary>
+		/// Close the connection between the application and the database
+		/// </summary>
 		private static void DBCloseConnection()
 		{
 			conn.Close();
 			Console.WriteLine("Connection closed !");
 		}
+
+		/// <summary>
+		/// Get a player id
+		/// </summary>
+		/// <param name="pseudo">The pseudo to look for an id</param>
+		/// <returns></returns>
 		private static int GetPlayerId(string pseudo)
 		{
 			DBOpenConnection();
@@ -51,6 +69,11 @@ namespace HangmanGame
 				return -1;
 			}
 		}
+
+		/// <summary>
+		/// Get the number of words in database
+		/// </summary>
+		/// <returns></returns>
 		public static int GetWordsCount()
 		{
 			DBOpenConnection();
@@ -60,13 +83,21 @@ namespace HangmanGame
 			DBCloseConnection();
 			return res;
 		}
-		public static string GetWordById(int id)
+
+		/// <summary>
+		/// Get a word by a random id
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public static string GetARandomWord(out int idWord)
 		{
+			Random r = new Random();
 			DBOpenConnection();
+			idWord = r.Next(1, HangmanGame.DBRequests.GetWordsCount() + 1);
 			string request = @"
                 SELECT        idWord, word, wordValue, wordLeveL
                 FROM            word
-                WHERE        (idWord = " + id + ");";
+                WHERE        (idWord = " + idWord + ");";
 			cmd = new MySqlCommand(request, conn);
 			rdr = cmd.ExecuteReader();
 			rdr.Read();
@@ -74,6 +105,12 @@ namespace HangmanGame
 			rdr.Close();
 			return res;
 		}
+
+		/// <summary>
+		/// Get a word value by its id
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
 		public static float GetWordValue(int id)
 		{
 			DBOpenConnection();
@@ -88,6 +125,12 @@ namespace HangmanGame
 			rdr.Close();
 			return res;
 		}
+
+		/// <summary>
+		/// Get a random word in a specific difficulty level
+		/// </summary>
+		/// <param name="wordLevel"></param>
+		/// <returns></returns>
 		public static string GetWordByLevel(int wordLevel)
 		{
 			DBOpenConnection();
@@ -104,13 +147,18 @@ namespace HangmanGame
 			rdr.Close();
 			return res;
 		}
+
+		/// <summary>
+		/// Insert a new player by its name, but check first if it's not already there.
+		/// </summary>
+		/// <param name="pseudo">The pseudo to add</param>
 		public static void InsertNewPlayer(string pseudo)
 		{
 			DBOpenConnection();
 			InsertNewTodayDate();
 			if (pseudo != null & pseudo != "" && !PlayerExists(pseudo))
 			{
-				Tuple<int, string> lastDateOnServer = LastDateOnServer();
+				Tuple<int, string> lastDateOnServer = GetLastDateOnServer();
 				int idTodayOnServer = lastDateOnServer.Item1;
 				string todayOnServer = lastDateOnServer.Item2;
 				string request = "INSERT INTO `player`(`pseudo`, `subscriptionDate`) VALUES ('" + pseudo + "', " + idTodayOnServer + ");";
@@ -123,9 +171,13 @@ namespace HangmanGame
 			}
 			DBCloseConnection();
 		}
+
+		/// <summary>
+		/// Insert the today date in the database but check first if it's not already there.
+		/// </summary>
 		public static void InsertNewTodayDate()
 		{
-			Tuple<int, string> lastDateOnServer = LastDateOnServer();
+			Tuple<int, string> lastDateOnServer = GetLastDateOnServer();
 			int idTodayOnServer = lastDateOnServer.Item1;
 			string todayOnServer = lastDateOnServer.Item2;
 			string[] todayLocalArray = DateTime.Now.GetDateTimeFormats();
@@ -138,6 +190,15 @@ namespace HangmanGame
 				cmd.ExecuteNonQuery();
 			}
 		}
+
+		/// <summary>
+		/// Insert a new record to the leaderboard
+		/// </summary>
+		/// <param name="score">The score added</param>
+		/// <param name="remainingTries">The number of tries remaining</param>
+		/// <param name="pseudo">The pseudo of the player</param>
+		/// <param name="idWord">The id of the word played</param>
+		/// <param name="idDate">The id of the today date</param>
 		public static void InsertScoreToLeaderBoard(float score, int remainingTries, string pseudo, int idWord, int idDate)
 		{
 			DBOpenConnection();
@@ -148,7 +209,12 @@ namespace HangmanGame
 			cmd.ExecuteNonQuery();
 			DBCloseConnection();
 		}
-		public static Tuple<int, string> LastDateOnServer()
+
+		/// <summary>
+		/// Get the last date present in the database
+		/// </summary>
+		/// <returns>A couple of value <idDate, stringDate></returns>
+		public static Tuple<int, string> GetLastDateOnServer()
 		{
 			string requestLastDate = @"SELECT idDate, DATE_FORMAT(date, '%Y-%m-%d') FROM `date` WHERE idDate = (SELECT max(idDate) FROM date);";
 			Tuple<int, string> res;
@@ -166,6 +232,12 @@ namespace HangmanGame
 			rdr.Close();
 			return res;
 		}
+
+		/// <summary>
+		/// Check if the player already exists in the database
+		/// </summary>
+		/// <param name="pseudo">The pseudo to look for</param>
+		/// <returns></returns>
 		private static bool PlayerExists(string pseudo)
 		{
 			bool res;
